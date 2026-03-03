@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://re8qx5o2psxs"]
+
+[ext_resource type="Script" uid="uid://5cn3iyfxi613" path="res://objects/player/player.gd" id="1_cqmt1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxedw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eqqp1"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cqmt1"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.4
+
+[node name="Player" type="CharacterBody3D" unique_id=1089648825]
+script = ExtResource("1_cqmt1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=245774912]
+shape = SubResource("CapsuleShape3D_bxedw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=687578956]
+visible = false
+mesh = SubResource("CapsuleMesh_eqqp1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=195386807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.20773417)
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=775935627]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.4, 0)
+debug_shape_thickness = 5
+
+[node name="WeaponSlot" type="Node3D" parent="." unique_id=427299998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456, 0.165, -0.55)
+
+[node name="Gun" type="Node3D" parent="WeaponSlot" unique_id=869758643]
+transform = Transform3D(0.9781476, -0.2079117, 9.088109e-09, 0, -4.371139e-08, -1, 0.2079117, 0.9781476, -4.275619e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponSlot/Gun" unique_id=297734513]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, -1.7763568e-15, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_cqmt1")
