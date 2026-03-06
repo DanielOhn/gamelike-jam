@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://re8qx5o2psxs" path="res://objects/player/player.tscn" id="1_ln2x5"]
 [ext_resource type="PackedScene" uid="uid://b70e41u3tyvph" path="res://blender/maze.blend" id="2_6or15"]
+[ext_resource type="PackedScene" uid="uid://d4mbvnkasa3t6" path="res://objects/enemy/enemy.tscn" id="3_8d50e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ln2x5"]
 
@@ -50,7 +51,7 @@ mesh = SubResource("PlaneMesh_b7jps")
 shape = SubResource("ConcavePolygonShape3D_6or15")
 
 [node name="Player" parent="." unique_id=1089648825 instance=ExtResource("1_ln2x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -68.84233)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1918869047]
 environment = SubResource("Environment_ln2x5")
@@ -61,3 +62,6 @@ light_energy = 2.0
 
 [node name="maze" parent="." unique_id=2027926317 instance=ExtResource("2_6or15")]
 transform = Transform3D(500, 0, 0, 0, 250, 0, 0, 0, 500, 0, 5.535957, 0)
+
+[node name="Enemy" parent="." unique_id=1005086158 instance=ExtResource("3_8d50e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.845, 1, -50)

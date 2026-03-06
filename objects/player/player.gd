@@ -1,12 +1,27 @@
 extends CharacterBody3D
+class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@export var health: float = 25
 @export var mouse_sensitivty: float = .1
 
 @onready var weapon_slot: WeaponSlot = $WeaponSlot
 @onready var camera: Camera3D = $Camera3D
+@onready var immune_timer: Timer = find_child("ImmuneTimer")
+
+func hurt(damage: float):
+	print(immune_timer.is_stopped(), immune_timer.wait_time)
+	if immune_timer.is_stopped():
+		immune_timer.start()
+		health -= damage
+		if health <= 0:
+			print("Game Over")
+			get_tree().paused = true
+		
+	
+	
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
