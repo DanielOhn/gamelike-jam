@@ -9,4 +9,7 @@ func enter():
 	hurt_tween.tween_property(state_machine.enemy, "rotation:x", start_rotation, .12)
 	await hurt_tween.finished
 	
-	state_machine.switch_state(state_machine.find_child("MoveState"))
+	if state_machine.target:
+		state_machine.switch_state(state_machine.find_child("MoveState"))
+	else:
+		state_machine.switch_state(state_machine.find_child("IdleState"))

@@ -4,7 +4,7 @@ class_name StateMachine
 var current_state: State
 
 func switch_state(new_state):
-	print("NEW STATE: ", new_state)
+	print(name, ". New State: ", new_state)
 	if current_state:
 		current_state.exit()
 		

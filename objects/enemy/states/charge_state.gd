@@ -11,8 +11,8 @@ func charge() -> void:
 	cooldown_timer.start()
 	var charge_tween: Tween = create_tween()
 	
-	charge_tween.tween_property(state_machine.enemy, "rotation:x", state_machine.enemy.rotation.x - PI / 8, .8)
-	charge_tween.tween_property(state_machine.enemy, "position", state_machine.target.position, .6)
+	charge_tween.tween_property(state_machine.enemy, "rotation:x", state_machine.enemy.rotation.x - PI / 8, .25)
+	charge_tween.tween_property(state_machine.enemy, "position", state_machine.target.position, .5)
 	
 	await charge_tween
 	

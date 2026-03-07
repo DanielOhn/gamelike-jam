@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://bgs4rcft7meu7"]
 
-[ext_resource type="Script" uid="uid://bqkef3dj33n8" path="res://objects/bullet.gd" id="1_1hbe6"]
+[ext_resource type="Script" uid="uid://bqkef3dj33n8" path="res://objects/weapons/bullet.gd" id="1_1hbe6"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_f1esg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1hbe6"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1hbe6"]
-radius = 5.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_3ndsa"]
+radius = 4.0
 
 [node name="Bullet" type="Area3D" unique_id=524811658]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -22,7 +22,7 @@ shape = SubResource("SphereShape3D_1hbe6")
 [node name="SeekBox" type="Area3D" parent="." unique_id=775970019]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SeekBox" unique_id=845096341]
-shape = SubResource("CylinderShape3D_1hbe6")
+shape = SubResource("SphereShape3D_3ndsa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="SeekBox" to="." method="_on_seek_box_body_entered"]

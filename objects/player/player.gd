@@ -19,28 +19,13 @@ func hurt(damage: float):
 		if health <= 0:
 			print("Game Over")
 			get_tree().paused = true
-		
-	
-	
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
-	if event is InputEventMouseMotion:
-		var MouseEvent = event.relative * get_physics_process_delta_time()
-		rotation.x -= MouseEvent.y * mouse_sensitivty
-		rotation.y -= MouseEvent.x * mouse_sensitivty
-		rotation.x = clamp(rotation.x, -.5, .6)
-		
-		#rotation_object_local(Vector3(0, 1, 0), -rotation.x)
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == 1 or event.is_pressed() and event.button_index == 1:
-			weapon_slot.shoot_gun()
 
+	#if event.is_action_pressed("ui_cancel"):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _physics_process(delta):
 	# Add the gravity.

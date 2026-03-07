@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://d4mbvnkasa3t6"]
 
 [ext_resource type="Script" uid="uid://c3qnvvp3chlnl" path="res://objects/enemy/enemy.gd" id="1_5y7ac"]
-[ext_resource type="Script" uid="uid://ce2edvelhg6p1" path="res://objects/enemy/move_state.gd" id="2_1rjq7"]
-[ext_resource type="Script" uid="uid://dsyjhjm7dfp4o" path="res://objects/enemy/enemy_state_machine.gd" id="2_vc3w8"]
-[ext_resource type="Script" uid="uid://b051snpyeutvn" path="res://objects/enemy/idle_state.gd" id="3_c38me"]
-[ext_resource type="Script" uid="uid://bpralvyrvrbed" path="res://objects/enemy/charge_state.gd" id="4_ecd4o"]
-[ext_resource type="Script" uid="uid://b7o23s7trajxn" path="res://objects/enemy/state.gd" id="4_esv4w"]
-[ext_resource type="Script" uid="uid://1gowl6wqjd4r" path="res://objects/enemy/attack_state.gd" id="4_gnbxk"]
-[ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/hurt_state.gd" id="7_2ghy8"]
+[ext_resource type="Script" uid="uid://ce2edvelhg6p1" path="res://objects/enemy/states/move_state.gd" id="2_1rjq7"]
+[ext_resource type="Script" uid="uid://dsyjhjm7dfp4o" path="res://objects/enemy/states/enemy_state_machine.gd" id="2_vc3w8"]
+[ext_resource type="Script" uid="uid://b051snpyeutvn" path="res://objects/enemy/states/idle_state.gd" id="3_c38me"]
+[ext_resource type="Script" uid="uid://bpralvyrvrbed" path="res://objects/enemy/states/charge_state.gd" id="4_ecd4o"]
+[ext_resource type="Script" uid="uid://b7o23s7trajxn" path="res://scripts/state.gd" id="4_esv4w"]
+[ext_resource type="Script" uid="uid://1gowl6wqjd4r" path="res://objects/enemy/states/attack_state.gd" id="4_gnbxk"]
+[ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/states/hurt_state.gd" id="7_2ghy8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uo5qs"]
 

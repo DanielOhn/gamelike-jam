@@ -5,8 +5,6 @@
 [ext_resource type="Script" uid="uid://daj5kqv2kp834" path="res://objects/weapons/weapon_state.gd" id="3_ssrue"]
 [ext_resource type="Script" uid="uid://cblhlk7ujydap" path="res://objects/weapons/ready_state.gd" id="4_jnjyq"]
 [ext_resource type="Script" uid="uid://bvw1vwsf80c8m" path="res://objects/weapons/shoot_state.gd" id="5_gnkmh"]
-[ext_resource type="Script" uid="uid://clww6prfgncth" path="res://objects/weapons/recover_state.gd" id="5_xkryw"]
-[ext_resource type="PackedScene" uid="uid://bgs4rcft7meu7" path="res://objects/weapons/bullet.tscn" id="7_ow0dq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxedw"]
 
@@ -50,11 +48,9 @@ script = ExtResource("4_jnjyq")
 [node name="ReloadState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=1810090986]
 
 [node name="RecoverState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=28476857]
-script = ExtResource("5_xkryw")
 
 [node name="ShootState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=1753013715]
 script = ExtResource("5_gnkmh")
-projectile = ExtResource("7_ow0dq")
 
 [node name="ImmuneTimer" type="Timer" parent="." unique_id=1239425301]
 wait_time = 2.0
