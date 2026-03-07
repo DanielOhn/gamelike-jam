@@ -5,6 +5,7 @@ class_name ShootState
 
 func enter():
 	spawn_bullet(projectile)
+	state_machine.current_ammo -= 1
 	
 func spawn_bullet(projectile):
 	var space_state = state_machine.weapon_slot.get_world_3d().direct_space_state
