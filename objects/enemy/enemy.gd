@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Enemy
 
-@export var speed: float = 3.5
+@export var speed: float = 3.2
 @export var health: float = 24.0
 @export var damage: float = 5
 
@@ -24,7 +24,7 @@ func _on_hitbox_body_entered(body):
 func hurt(dmg: float):
 	health = health - dmg
 	if health <= 0:
-		print("Dead")
+		print_debug(self, "Dead")
 		queue_free()
 	else:
 		state_machine.switch_state(state_machine.find_child("HurtState"))

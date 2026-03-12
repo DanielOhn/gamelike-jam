@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://br4r6t7elqk43" path="res://objects/weapons/reload_state.gd" id="5_m4kly"]
 [ext_resource type="Script" uid="uid://clww6prfgncth" path="res://objects/weapons/recover_state.gd" id="5_xkryw"]
 [ext_resource type="PackedScene" uid="uid://bgs4rcft7meu7" path="res://objects/weapons/bullet.tscn" id="7_ow0dq"]
+[ext_resource type="Script" uid="uid://duc21dhgr1ncm" path="res://objects/player/states/player_state_machine.gd" id="9_xgwla"]
+[ext_resource type="Script" uid="uid://dxgs10llo1fof" path="res://objects/player/states/play.gd" id="10_bi5m7"]
+[ext_resource type="Script" uid="uid://sxjs7jd7l2v" path="res://objects/player/states/pause.gd" id="10_psowp"]
+[ext_resource type="Script" uid="uid://dyecna6atayvx" path="res://objects/player/hurt.gd" id="12_45urx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxedw"]
 
@@ -58,6 +62,42 @@ script = ExtResource("5_xkryw")
 script = ExtResource("5_gnkmh")
 projectile = ExtResource("7_ow0dq")
 
-[node name="ImmuneTimer" type="Timer" parent="." unique_id=1239425301]
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1320786724]
+process_mode = 3
+script = ExtResource("9_xgwla")
+
+[node name="Pause" type="Node" parent="PlayerStateMachine" unique_id=1911556558]
+script = ExtResource("10_psowp")
+
+[node name="Play" type="Node" parent="PlayerStateMachine" unique_id=2107912122]
+script = ExtResource("10_bi5m7")
+
+[node name="Hurt" type="Node" parent="PlayerStateMachine" unique_id=1845458891]
+script = ExtResource("12_45urx")
+
+[node name="ImmuneTimer" type="Timer" parent="PlayerStateMachine/Hurt" unique_id=1239425301]
 wait_time = 2.0
 one_shot = true
+
+[node name="PlayerUI" type="Control" parent="." unique_id=781118678]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerHealth" type="HFlowContainer" parent="PlayerUI" unique_id=639725131]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/PlayerHealth" unique_id=873827258]
+layout_mode = 2
+
+[connection signal="timeout" from="PlayerStateMachine/Hurt/ImmuneTimer" to="PlayerStateMachine/Hurt" method="_on_immune_timer_timeout"]

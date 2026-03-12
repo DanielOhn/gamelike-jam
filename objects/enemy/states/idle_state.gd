@@ -4,11 +4,16 @@ class_name IdleState
 var current_tween: Tween
 
 func enter():
-	idle()
+	idle_animation()
 
 func exit():
 	if current_tween:
 		current_tween.kill()
+		
+func idle_animation():
+	print(state_machine.anim_player)
+	state_machine.anim_player.play("stand")
+	
 
 func idle():
 	var idle_tween: Tween = create_tween()
