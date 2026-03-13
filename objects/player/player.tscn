@@ -87,17 +87,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerHealth" type="HFlowContainer" parent="PlayerUI" unique_id=639725131]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -70.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/PlayerHealth" unique_id=873827258]
-layout_mode = 2
-
 [connection signal="timeout" from="PlayerStateMachine/Hurt/ImmuneTimer" to="PlayerStateMachine/Hurt" method="_on_immune_timer_timeout"]

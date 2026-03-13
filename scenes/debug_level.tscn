@@ -2,11 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://re8qx5o2psxs" path="res://objects/player/player.tscn" id="1_ln2x5"]
 [ext_resource type="PackedScene" uid="uid://b70e41u3tyvph" path="res://blender/maze.blend" id="2_6or15"]
-[ext_resource type="PackedScene" uid="uid://d4mbvnkasa3t6" path="res://objects/enemy/enemy.tscn" id="3_8d50e"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ln2x5"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6or15"]
+[ext_resource type="PackedScene" uid="uid://i5jh83l47v6r" path="res://objects/enemy/minotaur.tscn" id="3_8d50e"]
+[ext_resource type="PackedScene" uid="uid://tjjrd2tnw88e" path="res://objects/enemy/gargoyle.tscn" id="4_iwus7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8sil"]
 albedo_color = Color(0.26503062, 0.40081054, 0.46158445, 1)
@@ -23,24 +20,6 @@ data = PackedVector3Array(75, 0, 75, -75, 0, 75, 75, 0, -75, -75, 0, 75, -75, 0,
 [node name="DebugLevel" type="Node3D" unique_id=8875651]
 
 [node name="LevelObejcts" type="Node3D" parent="." unique_id=1679641268]
-
-[node name="Box" type="StaticBody3D" parent="LevelObejcts" unique_id=986580445]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObejcts/Box" unique_id=350884302]
-mesh = SubResource("BoxMesh_ln2x5")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObejcts/Box" unique_id=676961782]
-shape = SubResource("BoxShape3D_6or15")
-
-[node name="Box2" type="RigidBody3D" parent="LevelObejcts" unique_id=2056070170]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79566336, 2.6943176, -15)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelObejcts/Box2" unique_id=1817428543]
-mesh = SubResource("BoxMesh_ln2x5")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObejcts/Box2" unique_id=710648531]
-shape = SubResource("BoxShape3D_6or15")
 
 [node name="Level" type="StaticBody3D" parent="." unique_id=880670047]
 
@@ -65,8 +44,8 @@ transform = Transform3D(500, 0, 0, 0, 250, 0, 0, 0, 500, 0, 6, 0)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1876363392]
 
-[node name="Enemy" parent="Enemies" unique_id=1005086158 instance=ExtResource("3_8d50e")]
-transform = Transform3D(0.19053487, 0, 0.98168045, 0, 1, 0, -0.98168045, 0, 0.19053487, 7.332053, 1, -50)
+[node name="Minotaur" parent="Enemies" unique_id=1005086158 instance=ExtResource("3_8d50e")]
+transform = Transform3D(0.32006738, 0, 0.9473948, 0, 1, 0, -0.9473948, 0, 0.32006738, 7.774233, 1, -49.189)
 
-[node name="Enemy2" parent="Enemies" unique_id=239920397 instance=ExtResource("3_8d50e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.70156, 1, -35.419907)
+[node name="Gargoyle" parent="." unique_id=930068618 instance=ExtResource("4_iwus7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.284028, 0.7931189, -64.61781)

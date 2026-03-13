@@ -1,21 +1,15 @@
-extends CharacterBody3D
-class_name Enemy
+extends Enemy
+class_name MinotaurEnemy
 
-@export var speed: float = 3.2
-@export var health: float = 24.0
-@export var damage: float = 5
+@onready var hitbox = find_child("Hitbox")
 
-@export var state_machine: EnemyStateMachine
-@export var hurt_state: State
-
-#func _ready():
-	#hitbox.monitoring = false
+func _ready():
+	hitbox.monitoring = false
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 
 func _on_hitbox_body_entered(body):
 	if body is Player:

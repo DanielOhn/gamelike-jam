@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bow3nws6higok"]
+
+[ext_resource type="PackedScene" uid="uid://csiya6rf5gd2v" path="res://blender/weapons/skull-weapon.blend" id="1_m80qo"]
+
+[node name="Skull" type="Node3D" unique_id=1109559215]
+
+[node name="skull-weapon" parent="." unique_id=568734126 instance=ExtResource("1_m80qo")]
+
+[editable path="skull-weapon"]

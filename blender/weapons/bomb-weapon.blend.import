@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ighrmurjqad7"
-path="res://.godot/imported/bomb-weapon.blend-952c13542f98e37629ae9820c07f9859.scn"
+path="res://.godot/imported/bomb-weapon.blend-f984c1ee43a0d6ca49623acaa5a9dd4a.scn"
 
 [deps]
 
-source_file="res://blender/bomb-weapon.blend"
-dest_files=["res://.godot/imported/bomb-weapon.blend-952c13542f98e37629ae9820c07f9859.scn"]
+source_file="res://blender/weapons/bomb-weapon.blend"
+dest_files=["res://.godot/imported/bomb-weapon.blend-f984c1ee43a0d6ca49623acaa5a9dd4a.scn"]
 
 [params]
 
@@ -37,7 +37,16 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Camera": {
+"import/skip_import": true
+},
+"PATH:Sun": {
+"import/skip_import": true
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

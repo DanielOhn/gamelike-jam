@@ -4,7 +4,10 @@ class_name IdleState
 var current_tween: Tween
 
 func enter():
-	idle_animation()
+	if state_machine.target == null:
+		idle_animation()
+	else:
+		state_machine.switch_state(state_machine.find_child("MoveState"))
 
 func exit():
 	if current_tween:

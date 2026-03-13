@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://1gowl6wqjd4r" path="res://objects/enemy/states/attack_state.gd" id="5_4s6t0"]
 [ext_resource type="Script" uid="uid://ce2edvelhg6p1" path="res://objects/enemy/states/move_state.gd" id="6_72bdc"]
 [ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/states/hurt_state.gd" id="7_tg7x6"]
+[ext_resource type="Script" uid="uid://b7o23s7trajxn" path="res://scripts/state.gd" id="8_lvplf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grvcm"]
 resource_name = "Material.002"
@@ -1849,9 +1850,11 @@ script = ExtResource("5_4s6t0")
 script = ExtResource("6_72bdc")
 attack_cooldown = NodePath("../ChargeState/ChargeCooldown")
 
-[node name="HurtState" type="Node" parent="MinotaurStateMachine" unique_id=1070560660 node_paths=PackedStringArray("exit_state")]
+[node name="HurtState" type="Node" parent="MinotaurStateMachine" unique_id=1070560660]
 script = ExtResource("7_tg7x6")
-exit_state = NodePath("../IdleState")
 
-[connection signal="body_entered" from="ScanArea" to="MinotaurStateMachine" method="_on_scan_area_body_entered"]
+[node name="State" type="Node" parent="MinotaurStateMachine" unique_id=863747460]
+script = ExtResource("8_lvplf")
+
+[connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

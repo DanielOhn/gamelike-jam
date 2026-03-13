@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://tjjrd2tnw88e"]
+
+[ext_resource type="Script" uid="uid://bn3tnqyh3uill" path="res://objects/enemy/gargoyle.gd" id="1_p2d2u"]
+[ext_resource type="PackedScene" uid="uid://b1orqcvo3u3ce" path="res://blender/gargoyle2.glb" id="2_p2d2u"]
+[ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/states/hurt_state.gd" id="7_v18hn"]
+[ext_resource type="Script" uid="uid://dido3n6ofv2wa" path="res://objects/enemy/states/gargoyle_state_machine.gd" id="8_p2d2u"]
+[ext_resource type="Script" uid="uid://hrnphmqgh7lt" path="res://objects/enemy/states/gargoyle_idle.gd" id="9_1341u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1341u"]
+size = Vector3(1.2, 1.7, 1.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1rjq7"]
+radius = 5.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2d2u"]
+size = Vector3(1.2, 1.5, 1)
+
+[node name="Gargoyle" type="CharacterBody3D" unique_id=1005086158 node_paths=PackedStringArray("state_machine", "hurt_state")]
+script = ExtResource("1_p2d2u")
+speed = 0.0
+health = 40.0
+damage = 14.0
+state_machine = NodePath("GargoyleStateMachine")
+hurt_state = NodePath("GargoyleStateMachine/HurtState")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1414019639]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.054592192, 0)
+shape = SubResource("BoxShape3D_1341u")
+
+[node name="gargoyle2" parent="." unique_id=1290209062 instance=ExtResource("2_p2d2u")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, -0.6824713, 0)
+
+[node name="ScanArea" type="Area3D" parent="." unique_id=1800966469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScanArea" unique_id=1730957575]
+shape = SubResource("CylinderShape3D_1rjq7")
+
+[node name="Hitbox" type="Area3D" parent="." unique_id=1893474617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=2032205971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.36505842)
+shape = SubResource("BoxShape3D_p2d2u")
+
+[node name="GargoyleStateMachine" type="Node" parent="." unique_id=287983113 node_paths=PackedStringArray("start_state")]
+script = ExtResource("8_p2d2u")
+start_state = NodePath("GargoyleIdle")
+
+[node name="GargoyleIdle" type="Node" parent="GargoyleStateMachine" unique_id=272774111]
+script = ExtResource("9_1341u")
+
+[node name="HurtState" type="Node" parent="GargoyleStateMachine" unique_id=1122634111 node_paths=PackedStringArray("exit_state")]
+script = ExtResource("7_v18hn")
+exit_state = NodePath("../GargoyleIdle")
+
+[connection signal="body_entered" from="ScanArea" to="GargoyleStateMachine" method="_on_scan_area_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
