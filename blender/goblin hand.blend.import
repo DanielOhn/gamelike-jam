@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://csiya6rf5gd2v"
-path="res://.godot/imported/skull-weapon.blend-46644e0aa4c2d7f101ea8953098bdce0.scn"
+uid="uid://jbds21agxia"
+path="res://.godot/imported/goblin hand.blend-285fbf6d2ccbaabca0b8e2f063596229.scn"
 
 [deps]
 
-source_file="res://blender/weapons/skull-weapon.blend"
-dest_files=["res://.godot/imported/skull-weapon.blend-46644e0aa4c2d7f101ea8953098bdce0.scn"]
+source_file="res://blender/goblin hand.blend"
+dest_files=["res://.godot/imported/goblin hand.blend-285fbf6d2ccbaabca0b8e2f063596229.scn"]
 
 [params]
 
@@ -37,16 +37,7 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Camera": {
-"import/skip_import": true
-},
-"PATH:Sun": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

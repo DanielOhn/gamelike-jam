@@ -1833,11 +1833,16 @@ script = ExtResource("2_a64q4")
 anim_player = NodePath("../minotaur/AnimationPlayer")
 start_state = NodePath("IdleState")
 
-[node name="IdleState" type="Node" parent="MinotaurStateMachine" unique_id=1568444225]
+[node name="IdleState" type="Node" parent="MinotaurStateMachine" unique_id=1568444225 node_paths=PackedStringArray("exit_state")]
 script = ExtResource("3_ps7y2")
+animation = "stand"
+exit_state = NodePath("../MoveState")
 
-[node name="ChargeState" type="Node" parent="MinotaurStateMachine" unique_id=1485544192]
+[node name="ChargeState" type="Node" parent="MinotaurStateMachine" unique_id=1485544192 node_paths=PackedStringArray("cooldown_timer", "exit_state")]
 script = ExtResource("4_bqw8k")
+cooldown_timer = NodePath("ChargeCooldown")
+anim_text = "CHARGE"
+exit_state = NodePath("../MoveState")
 
 [node name="ChargeCooldown" type="Timer" parent="MinotaurStateMachine/ChargeState" unique_id=1690398142]
 one_shot = true

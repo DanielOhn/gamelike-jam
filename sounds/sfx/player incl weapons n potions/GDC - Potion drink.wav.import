@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1bq6f2lsoibn"
+path="res://.godot/imported/GDC - Potion drink.wav-f10d60a634f31fe4d07389c30bfa6eae.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/player incl weapons n potions/GDC - Potion drink.wav"
+dest_files=["res://.godot/imported/GDC - Potion drink.wav-f10d60a634f31fe4d07389c30bfa6eae.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

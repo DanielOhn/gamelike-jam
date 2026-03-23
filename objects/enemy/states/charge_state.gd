@@ -1,7 +1,11 @@
 extends State
 class_name ChargeState
-@onready var cooldown_timer: Timer = $ChargeCooldown
+
+@export var cooldown_timer: Timer
 @export var charge_time: float = 1
+@export var anim_text: String
+@export var exit_state: State
+
 var charging: bool = false
 
 
@@ -25,22 +29,20 @@ func _on_anim_stop():
 	#state_machine.enemy.hitbox.monitoring = false
 	#state_machine.anim_player.stop()
 	
-func charge_impluse() -> void:
-	var location = state_machine.target.position - state_machine.enemy.position
-	state_machine.enemy.add_impluse(location * 5)
-	
 func enter() -> void:
 	if cooldown_timer.is_stopped():
-		state_machine.anim_player.play("CHARGE")
+		if anim_text != null:
+			state_machine.anim_player.play(anim_text)
+			
 		charging = true
 		state_machine.enemy.hitbox.monitoring = true
 		cooldown_timer.start()
 	else:
-		state_machine.switch_state(state_machine.find_child("MoveState"))
+		state_machine.switch_state(exit_state)
 
 func stop_charge():
 	state_machine.anim_player.stop()
-	state_machine.switch_state(state_machine.find_child("MoveState"))
+	state_machine.switch_state(exit_state)
 
 func physics_update(_delta: float) -> void:
 	if charging:
@@ -48,6 +50,7 @@ func physics_update(_delta: float) -> void:
 		if direction:
 			state_machine.enemy.velocity.x = direction.x * 8
 			state_machine.enemy.velocity.z = direction.z * 8
+			state_machine.enemy.velocity.y = direction.z * 8
 		
 		state_machine.enemy.move_and_slide()
 		state_machine.enemy.look_at(state_machine.target.position)

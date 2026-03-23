@@ -17,9 +17,7 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 
-func _on_hitbox_body_entered(body):
-	if body is Player:
-		body.hurt(damage)
+
 		
 func hurt(dmg: float):
 	health = health - dmg
