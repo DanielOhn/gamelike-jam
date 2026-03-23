@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ce6qrpu66503r"
+path="res://.godot/imported/Zapsplat - Harpy - Run aka Flap.wav-60fe667b439f7e6f5ced610168c55c0f.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/monsters/Zapsplat - Harpy - Run aka Flap.wav"
+dest_files=["res://.godot/imported/Zapsplat - Harpy - Run aka Flap.wav-60fe667b439f7e6f5ced610168c55c0f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

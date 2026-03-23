@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c6cv1reem3fdc"
+path="res://.godot/imported/Zapsplat - Music - Game Over Theme.mp3-a75ee63c624ea459f55e499adf9acff9.mp3str"
+
+[deps]
+
+source_file="res://sounds/music/Zapsplat - Music - Game Over Theme.mp3"
+dest_files=["res://.godot/imported/Zapsplat - Music - Game Over Theme.mp3-a75ee63c624ea459f55e499adf9acff9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
