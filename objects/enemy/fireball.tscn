@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b4rbrkrgwfrx4"]
+
+[ext_resource type="Script" uid="uid://b2qdhhlfn1tvk" path="res://objects/enemy/fireball.gd" id="1_sg3xv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_m4eie"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mo3pe"]
+
+[node name="Fireball" type="Area3D" unique_id=1181032566]
+script = ExtResource("1_sg3xv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=648904186]
+mesh = SubResource("SphereMesh_m4eie")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1343993945]
+shape = SubResource("SphereShape3D_mo3pe")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b70e41u3tyvph" path="res://blender/maze.blend" id="2_6or15"]
 [ext_resource type="PackedScene" uid="uid://i5jh83l47v6r" path="res://objects/enemy/minotaur.tscn" id="3_8d50e"]
 [ext_resource type="PackedScene" uid="uid://tjjrd2tnw88e" path="res://objects/enemy/gargoyle.tscn" id="4_iwus7"]
+[ext_resource type="PackedScene" uid="uid://cibbxcxhqvp2g" path="res://objects/enemy/harpy.tscn" id="5_ciaof"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8sil"]
 albedo_color = Color(0.26503062, 0.40081054, 0.46158445, 1)
@@ -49,3 +50,6 @@ transform = Transform3D(0.32006738, 0, 0.9473948, 0, 1, 0, -0.9473948, 0, 0.3200
 
 [node name="Gargoyle" parent="." unique_id=930068618 instance=ExtResource("4_iwus7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.284028, 0.7931189, -64.61781)
+
+[node name="Harpy" parent="." unique_id=895039023 instance=ExtResource("5_ciaof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.428252, 3.9280453, -63.818466)
