@@ -16,30 +16,18 @@ func _ready():
 
 func _on_anim_stop():
 	stop_charge()
-	
-# Called when the node enters the scene tree for the first time.
-#func charge() -> void:
-	#cooldown_timer.start()
-	#state_machine.enemy.hitbox.monitoring = true
-	#
-	#var charge_tween: Tween = create_tween()
-	#
-	#charge_tween.tween_property(state_machine.enemy, "position", state_machine.target.position, .8)
-	#
-	#await charge_tween.finished
-	#state_machine.enemy.hitbox.monitoring = false
-	#state_machine.anim_player.stop()
+
 	
 func enter() -> void:
-	#if cooldown_timer.is_stopped():
-	if anim_text != null:
-		state_machine.anim_player.play(anim_text)
-		
-	charging = true
-	state_machine.enemy.hitbox.monitoring = true
-		#cooldown_timer.start()
-	#else:
-		#state_machine.switch_state(exit_state)
+	if cooldown_timer.is_stopped():
+		if anim_text != null:
+			state_machine.anim_player.play(anim_text)
+			
+		charging = true
+		state_machine.enemy.hitbox.monitoring = true
+		cooldown_timer.start()
+	else:
+		state_machine.switch_state(exit_state)
 
 func stop_charge():
 	state_machine.anim_player.stop()
@@ -50,14 +38,14 @@ func physics_update(_delta: float) -> void:
 	if direction:
 		state_machine.enemy.velocity.x = direction.x * charge_speed
 		state_machine.enemy.velocity.z = direction.z * charge_speed
-		state_machine.enemy.velocity.y = direction.y * charge_speed
+		#state_machine.enemy.velocity.y = direction.y * charge_speed
 	
 	state_machine.enemy.move_and_slide()
 	state_machine.enemy.look_at(state_machine.target.position)
 	
 	var distance: float = state_machine.get_distance()
 	
-	if distance < 1.8:
+	if distance < 1.4:
 		stop_charge()
 
 func exit():

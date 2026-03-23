@@ -2,6 +2,7 @@ extends EnemyStateMachine
 class_name HarpyStateMachine
 
 
+@export var target_found_state: State
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -11,4 +12,4 @@ func _process(delta):
 func _on_scan_area_body_entered(body):
 	if body is Player:
 		target = body
-		switch_state(find_child("ChargeState"))
+		switch_state(target_found_state)

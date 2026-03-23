@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bn3tnqyh3uill" path="res://objects/enemy/gargoyle.gd" id="1_p2d2u"]
 [ext_resource type="PackedScene" uid="uid://b1orqcvo3u3ce" path="res://blender/gargoyle2.glb" id="2_p2d2u"]
+[ext_resource type="Script" uid="uid://c56jbh7jirtmk" path="res://objects/enemy/gargoyle_fire.gd" id="6_motg6"]
+[ext_resource type="PackedScene" uid="uid://b4rbrkrgwfrx4" path="res://objects/enemy/fireball.tscn" id="7_lf60k"]
 [ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/states/hurt_state.gd" id="7_v18hn"]
 [ext_resource type="Script" uid="uid://dido3n6ofv2wa" path="res://objects/enemy/states/gargoyle_state_machine.gd" id="8_p2d2u"]
 [ext_resource type="Script" uid="uid://hrnphmqgh7lt" path="res://objects/enemy/states/gargoyle_idle.gd" id="9_1341u"]
@@ -47,12 +49,21 @@ shape = SubResource("BoxShape3D_p2d2u")
 script = ExtResource("8_p2d2u")
 start_state = NodePath("GargoyleIdle")
 
-[node name="GargoyleIdle" type="Node" parent="GargoyleStateMachine" unique_id=272774111]
+[node name="GargoyleIdle" type="Node" parent="GargoyleStateMachine" unique_id=272774111 node_paths=PackedStringArray("exit_state")]
 script = ExtResource("9_1341u")
+exit_state = NodePath("../GargoyleFire")
 
 [node name="HurtState" type="Node" parent="GargoyleStateMachine" unique_id=1122634111 node_paths=PackedStringArray("exit_state")]
 script = ExtResource("7_v18hn")
 exit_state = NodePath("../GargoyleIdle")
 
+[node name="GargoyleFire" type="Node" parent="GargoyleStateMachine" unique_id=2014133686 node_paths=PackedStringArray("fireball_cooldown")]
+script = ExtResource("6_motg6")
+fireball = ExtResource("7_lf60k")
+fireball_cooldown = NodePath("FireCooldown")
+
+[node name="FireCooldown" type="Timer" parent="GargoyleStateMachine/GargoyleFire" unique_id=842904614]
+
 [connection signal="body_entered" from="ScanArea" to="GargoyleStateMachine" method="_on_scan_area_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="GargoyleStateMachine/GargoyleFire/FireCooldown" to="GargoyleStateMachine/GargoyleFire" method="_on_fire_cooldown_timeout"]

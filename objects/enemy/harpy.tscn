@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqcf2dhar4wg4" path="res://objects/enemy/harpy.gd" id="1_tkk6q"]
 [ext_resource type="Script" uid="uid://d3yao1b6r7kgs" path="res://objects/enemy/harpy_idle_state.gd" id="3_41gwc"]
 [ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/states/hurt_state.gd" id="4_fdlf3"]
-[ext_resource type="Script" uid="uid://bpralvyrvrbed" path="res://objects/enemy/states/charge_state.gd" id="5_43jf3"]
+[ext_resource type="Script" uid="uid://bsy8fuv5173x0" path="res://objects/enemy/dive_state.gd" id="5_sl7v5"]
 [ext_resource type="Script" uid="uid://da88cylfqo2ye" path="res://objects/enemy/states/windup_state.gd" id="6_sl7v5"]
 [ext_resource type="Script" uid="uid://dt5kix1ii1xnl" path="res://objects/enemy/harpy_state_machine.gd" id="10_tkk6q"]
 
@@ -2243,8 +2243,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.94991267)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13583922, 0.6383222)
 shape = SubResource("BoxShape3D_ecd4o")
 
-[node name="HarpyStateMachine" type="Node" parent="." unique_id=742677041 node_paths=PackedStringArray("anim_player", "start_state")]
+[node name="HarpyStateMachine" type="Node" parent="." unique_id=742677041 node_paths=PackedStringArray("target_found_state", "anim_player", "start_state")]
 script = ExtResource("10_tkk6q")
+target_found_state = NodePath("WindupState")
 anim_player = NodePath("../righarpy/AnimationPlayer")
 start_state = NodePath("HarpyIdle")
 
@@ -2252,7 +2253,7 @@ start_state = NodePath("HarpyIdle")
 script = ExtResource("3_41gwc")
 timer = NodePath("IdleTimer")
 animation = "metarig|FLAPPING"
-exit_state = NodePath("../ChargeState")
+exit_state = NodePath("../DiveState")
 
 [node name="IdleTimer" type="Timer" parent="HarpyStateMachine/HarpyIdle" unique_id=1663447101]
 
@@ -2260,20 +2261,19 @@ exit_state = NodePath("../ChargeState")
 script = ExtResource("4_fdlf3")
 exit_state = NodePath("../HarpyIdle")
 
-[node name="ChargeState" type="Node" parent="HarpyStateMachine" unique_id=628574552 node_paths=PackedStringArray("cooldown_timer", "exit_state")]
-script = ExtResource("5_43jf3")
-cooldown_timer = NodePath("ChargeTimer")
-charge_time = 0.8
+[node name="DiveState" type="Node" parent="HarpyStateMachine" unique_id=628574552 node_paths=PackedStringArray("cooldown_timer", "exit_state")]
+script = ExtResource("5_sl7v5")
+cooldown_timer = NodePath("DiveTimer")
 anim_text = "metarig|FLAPPING"
 exit_state = NodePath("../WindupState")
 
-[node name="ChargeTimer" type="Timer" parent="HarpyStateMachine/ChargeState" unique_id=1826392265]
+[node name="DiveTimer" type="Timer" parent="HarpyStateMachine/DiveState" unique_id=1826392265]
 
 [node name="WindupState" type="Node" parent="HarpyStateMachine" unique_id=822188677 node_paths=PackedStringArray("exit_state")]
 script = ExtResource("6_sl7v5")
 height = 8.0
 fly_speed = 6.0
-exit_state = NodePath("../ChargeState")
+exit_state = NodePath("../DiveState")
 anim_name = "metarig|FLAPPING"
 
 [connection signal="body_entered" from="ScanArea" to="HarpyStateMachine" method="_on_scan_area_body_entered"]
