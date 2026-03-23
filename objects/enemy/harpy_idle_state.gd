@@ -13,6 +13,9 @@ func enter():
 	elif exit_state != null:
 		state_machine.switch_state(exit_state)
 		
+func exit():
+	timer.stop()
+		
 func idle_animation():
 	if state_machine.anim_player != null:
 		print(state_machine.anim_player)
