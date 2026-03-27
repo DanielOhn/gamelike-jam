@@ -11,7 +11,7 @@ func enter():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func physics_update(_delta: float) -> void:
-	var direction = Vector3.UP.normalized()
+	var direction = -(state_machine.target.position - state_machine.enemy.position).normalized()
 	if direction:
 		#state_machine.enemy.velocity.x = direction.x * * fly_speed * _delta
 		state_machine.enemy.velocity.z = direction.z * fly_speed 

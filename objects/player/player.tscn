@@ -2,12 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5cn3iyfxi613" path="res://objects/player/player.gd" id="1_cqmt1"]
 [ext_resource type="Script" uid="uid://croctacj4tb34" path="res://objects/weapons/weapon_slot.gd" id="2_g7ett"]
-[ext_resource type="Script" uid="uid://daj5kqv2kp834" path="res://objects/weapons/weapon_state.gd" id="3_ssrue"]
-[ext_resource type="Script" uid="uid://cblhlk7ujydap" path="res://objects/weapons/ready_state.gd" id="4_jnjyq"]
-[ext_resource type="Script" uid="uid://bvw1vwsf80c8m" path="res://objects/weapons/shoot_state.gd" id="5_gnkmh"]
-[ext_resource type="Script" uid="uid://br4r6t7elqk43" path="res://objects/weapons/reload_state.gd" id="5_m4kly"]
-[ext_resource type="Script" uid="uid://clww6prfgncth" path="res://objects/weapons/recover_state.gd" id="5_xkryw"]
-[ext_resource type="PackedScene" uid="uid://bgs4rcft7meu7" path="res://objects/weapons/bullet.tscn" id="7_ow0dq"]
+[ext_resource type="PackedScene" uid="uid://ciqfyty6cd6cb" path="res://objects/weapons/wand.tscn" id="3_ow0dq"]
 [ext_resource type="Script" uid="uid://duc21dhgr1ncm" path="res://objects/player/states/player_state_machine.gd" id="9_xgwla"]
 [ext_resource type="Script" uid="uid://dxgs10llo1fof" path="res://objects/player/states/play.gd" id="10_bi5m7"]
 [ext_resource type="Script" uid="uid://sxjs7jd7l2v" path="res://objects/player/states/pause.gd" id="10_psowp"]
@@ -16,11 +11,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxedw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_eqqp1"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cqmt1"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 0.4
 
 [node name="Player" type="CharacterBody3D" unique_id=1089648825 groups=["Player"]]
 script = ExtResource("1_cqmt1")
@@ -33,34 +23,14 @@ visible = false
 mesh = SubResource("CapsuleMesh_eqqp1")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=195386807]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.20773417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.2)
+current = true
 
 [node name="WeaponSlot" type="Node3D" parent="." unique_id=427299998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456, 0.165, -0.55)
 script = ExtResource("2_g7ett")
 
-[node name="Wand" type="Node3D" parent="WeaponSlot" unique_id=869758643]
-transform = Transform3D(0.9781476, -0.2079117, 9.088109e-09, 0, -4.371139e-08, -1, 0.2079117, 0.9781476, -4.275619e-08, 0, 0, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WeaponSlot/Wand" unique_id=297734513]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, -1.7763568e-15, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_cqmt1")
-
-[node name="WeaponState" type="Node" parent="WeaponSlot/Wand" unique_id=187443552]
-script = ExtResource("3_ssrue")
-
-[node name="ReadyState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=583125209]
-script = ExtResource("4_jnjyq")
-
-[node name="ReloadState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=1810090986]
-script = ExtResource("5_m4kly")
-
-[node name="RecoverState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=28476857]
-script = ExtResource("5_xkryw")
-
-[node name="ShootState" type="Node" parent="WeaponSlot/Wand/WeaponState" unique_id=1753013715]
-script = ExtResource("5_gnkmh")
-projectile = ExtResource("7_ow0dq")
+[node name="Wand" parent="WeaponSlot" unique_id=1907342257 instance=ExtResource("3_ow0dq")]
 
 [node name="PlayerStateMachine" type="Node" parent="." unique_id=1320786724]
 process_mode = 3

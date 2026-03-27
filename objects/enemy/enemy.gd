@@ -19,7 +19,8 @@ func _physics_process(delta):
 
 
 		
-func hurt(dmg: float):
+func hurt(dmg: float, pos: Vector3):
+	look_at(pos)
 	health = health - dmg
 	if health <= 0:
 		print_debug(self, "Dead")

@@ -18,7 +18,7 @@ func move(pos):
 func _on_body_entered(body):
 	if (!body.is_in_group("Player")):
 		if body is Enemy:
-			body.hurt(damage)
+			body.hurt(damage, position)
 		queue_free()
 
 

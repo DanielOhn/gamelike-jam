@@ -1,9 +1,25 @@
 [gd_scene format=3 uid="uid://bow3nws6higok"]
 
-[ext_resource type="PackedScene" uid="uid://csiya6rf5gd2v" path="res://blender/weapons/skull-weapon.blend" id="1_m80qo"]
+[ext_resource type="PackedScene" uid="uid://dh62a2x4lu1kf" path="res://blender/weapons/skull.fbx" id="1_m80qo"]
+[ext_resource type="Script" uid="uid://bxjkklyevjhsm" path="res://objects/weapons/weapon_pickup.gd" id="1_twsdx"]
 
-[node name="Skull" type="Node3D" unique_id=1109559215]
+[sub_resource type="BoxShape3D" id="BoxShape3D_twsdx"]
+size = Vector3(1.5, 1.5, 1.5)
 
-[node name="skull-weapon" parent="." unique_id=568734126 instance=ExtResource("1_m80qo")]
+[node name="Skull" type="Area3D" unique_id=1102158106 node_paths=PackedStringArray("timer")]
+script = ExtResource("1_twsdx")
+timer = NodePath("Timer")
+weapon_name = "Skull"
 
-[editable path="skull-weapon"]
+[node name="skull" parent="." unique_id=726859493 instance=ExtResource("1_m80qo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1598435428]
+shape = SubResource("BoxShape3D_twsdx")
+
+[node name="Timer" type="Timer" parent="." unique_id=809447854]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
