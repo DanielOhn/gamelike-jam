@@ -5,7 +5,10 @@ class_name WeaponSlot
 @onready var weapons: Array = [get_child(0)]
 
 const SKULL_WEAPON = preload("uid://c8koklfjny4mn")
+const BOMB_WEAPON = preload("uid://dvp8llu0nldmj")
 
+@onready var weapon_update = $"../PlayerUI/VBoxContainer/HBoxContainer3/WeaponUpdate"
+@onready var ammo_update = $"../PlayerUI/VBoxContainer/HBoxContainer2/AmmoUpdate"
 
 var weapon_index: int = 0
 var current_weapon: Node3D
@@ -23,6 +26,8 @@ func swap_weapon(dir: int):
 	if weapons.size() - 1 == 0:
 		return
 	
+	current_weapon.get_child(1).anim_player.stop()
+	
 	if weapon_index + dir > weapons.size() - 1:
 		weapon_index = 0
 	elif weapon_index + dir < 0:
@@ -31,9 +36,14 @@ func swap_weapon(dir: int):
 		weapon_index += dir
 	
 	print("Swapping Weapon" , current_weapon, weapons[weapon_index])
-	current_weapon.get_child(1).disable()
+	for weap in weapons:
+		weap.get_child(1).disable()
+	#current_weapon.get_child(1).disable()
 	current_weapon = weapons[weapon_index]
 	current_weapon.get_child(1).enable()
+	
+	weapon_update.text = current_weapon.name
+	ammo_update.text = str(current_weapon.get_child(1).current_ammo)
 	
 
 func create_weapon(weapon: String):
@@ -44,12 +54,20 @@ func create_weapon(weapon: String):
 			add_child(new_weapon)
 			add_weapon(new_weapon)
 			
-			new_weapon.scale = Vector3(.05, .05, .05)
-			new_weapon.position = Vector3(0, 0, .1)
+			#new_weapon.position = Vector3(0, 0, .1)
+			
+		"Bomb":
+			new_weapon = BOMB_WEAPON.instantiate()
+			add_child(new_weapon)
+			add_weapon(new_weapon)
+			
+			new_weapon.position = Vector3(.12, .11, .4)
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("swap_up"):
-		swap_weapon(1)
-	
-	if Input.is_action_just_pressed("swap_down"):
-		swap_weapon(-1)
+	if current_weapon.get_child(1).current_state is ReadyState or current_weapon.get_child(1).current_state is ReloadState:
+		if Input.is_action_just_pressed("swap_up"):
+			swap_weapon(1)
+		
+		if Input.is_action_just_pressed("swap_down"):
+			swap_weapon(-1)
+	ammo_update.text = str(current_weapon.get_child(1).current_ammo)

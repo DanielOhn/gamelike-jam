@@ -1,10 +1,11 @@
 [gd_scene format=4 uid="uid://dfj41hpmeybkc"]
 
-[ext_resource type="PackedScene" uid="uid://bxmxva7wuoxgr" path="res://objects/weapons/bomb.tscn" id="1_ahmjg"]
+[ext_resource type="PackedScene" uid="uid://bxmxva7wuoxgr" path="res://objects/weapons/bomb_pickup.tscn" id="1_ahmjg"]
 [ext_resource type="PackedScene" uid="uid://re8qx5o2psxs" path="res://objects/player/player.tscn" id="1_ln2x5"]
 [ext_resource type="PackedScene" uid="uid://b70e41u3tyvph" path="res://blender/maze.blend" id="2_6or15"]
-[ext_resource type="PackedScene" uid="uid://bow3nws6higok" path="res://objects/weapons/skull.tscn" id="2_swri5"]
+[ext_resource type="PackedScene" uid="uid://bow3nws6higok" path="res://objects/weapons/skull_pickup.tscn" id="2_swri5"]
 [ext_resource type="PackedScene" uid="uid://i5jh83l47v6r" path="res://objects/enemy/minotaur.tscn" id="3_8d50e"]
+[ext_resource type="PackedScene" uid="uid://dpg1ojb2kp8dv" path="res://objects/pick_ups/health_potion.tscn" id="3_jomtx"]
 [ext_resource type="PackedScene" uid="uid://tjjrd2tnw88e" path="res://objects/enemy/gargoyle.tscn" id="4_iwus7"]
 [ext_resource type="PackedScene" uid="uid://cibbxcxhqvp2g" path="res://objects/enemy/harpy.tscn" id="5_ciaof"]
 [ext_resource type="Texture2D" uid="uid://bdltqe3x2ja0s" path="res://blender/box_Material Base Color.png" id="6_d1lkt"]
@@ -490,11 +491,14 @@ _data = {
 
 [node name="LevelObejcts" type="Node3D" parent="." unique_id=1679641268]
 
-[node name="Bomb" parent="LevelObejcts" unique_id=2067040914 instance=ExtResource("1_ahmjg")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.3178453, 0.97510225, -65.76026)
+[node name="BombPickup" parent="LevelObejcts" unique_id=2067040914 instance=ExtResource("1_ahmjg")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 17.558575, 1, -60.294518)
 
-[node name="Skull" parent="LevelObejcts" unique_id=1102158106 instance=ExtResource("2_swri5")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.4509625, 0.50673014, -73.425705)
+[node name="SkullPickup" parent="LevelObejcts" unique_id=1102158106 instance=ExtResource("2_swri5")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 22.825172, 0.75, -59.720222)
+
+[node name="HealthPotion" parent="LevelObejcts" unique_id=1974771396 instance=ExtResource("3_jomtx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.06374, 0.75, -59.880302)
 
 [node name="Level" type="StaticBody3D" parent="." unique_id=880670047]
 
@@ -527,7 +531,7 @@ transform = Transform3D(0.32006738, 0, 0.9473948, 0, 1, 0, -0.9473948, 0, 0.3200
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.284028, 0.7931189, -64.61781)
 
 [node name="Harpy" parent="." unique_id=895039023 instance=ExtResource("5_ciaof")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.428252, 3.9280453, -63.818466)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.781445, 3.9280453, -63.818466)
 
 [node name="PandorasBox" type="Node3D" parent="." unique_id=46640741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49488986, 0)

@@ -8,16 +8,12 @@ class_name Enemy
 @export var state_machine: EnemyStateMachine
 @export var hurt_state: State
 
-#func _ready():
-	#hitbox.monitoring = false
+
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-
-
 		
 func hurt(dmg: float, pos: Vector3):
 	look_at(pos)

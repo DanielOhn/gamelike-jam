@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_twsdx"]
 size = Vector3(1.5, 1.5, 1.5)
 
-[node name="Skull" type="Area3D" unique_id=1102158106 node_paths=PackedStringArray("timer")]
+[node name="SkullPickup" type="Area3D" unique_id=1102158106 node_paths=PackedStringArray("timer")]
 script = ExtResource("1_twsdx")
 timer = NodePath("Timer")
 weapon_name = "Skull"

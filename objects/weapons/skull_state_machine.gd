@@ -1,8 +1,6 @@
 extends WeaponStateMachine
 class_name SkullStateMachine
 
-@onready var laser = $"../skull-weapon2/Laser"
-
 @export var beam_damage: float = 2.5
 @export var fire_rate: float = .25
 

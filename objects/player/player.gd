@@ -4,6 +4,8 @@ class_name Player
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@onready var health_update = $PlayerUI/VBoxContainer/HBoxContainer/HealthUpdate
+
 @export var health: float = 25
 @export var mouse_sensitivty: float = .1
 
@@ -13,8 +15,12 @@ const JUMP_VELOCITY = 4.5
 @onready var state_machine = $PlayerStateMachine
 
 func hurt(damage):
-	health -= damage
-	state_machine.switch_state(state_machine.find_child("Hurt"))
+	if !state_machine.immune:
+		health -= damage
+		state_machine.switch_state(state_machine.find_child("Hurt"))
+		
+func _physics_process(delta):
+	health_update.text = str(health)
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

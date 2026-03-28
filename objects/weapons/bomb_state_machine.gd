@@ -1,0 +1,2 @@
+extends WeaponStateMachine
+class_name BombStateMachine

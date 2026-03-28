@@ -1,24 +1,23 @@
-[gd_scene format=3 uid="uid://bxmxva7wuoxgr"]
+[gd_scene format=3 uid="uid://bwe0bl1s6xi4j"]
 
-[ext_resource type="Script" uid="uid://bxjkklyevjhsm" path="res://objects/weapons/weapon_pickup.gd" id="1_c13kl"]
+[ext_resource type="Script" uid="uid://ci86dgvravsav" path="res://objects/weapons/bomb.gd" id="1_c13kl"]
 [ext_resource type="PackedScene" uid="uid://cxi7cvj2sppbq" path="res://blender/weapons/bomb.fbx" id="2_gkcqu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_6e8mt"]
-size = Vector3(2, 2, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_dg7wh"]
+size = Vector3(0.75, 0.75, 0.75)
 
-[node name="Bomb" type="Area3D" unique_id=2067040914 node_paths=PackedStringArray("timer")]
+[node name="Bomb" type="Area3D" unique_id=127802866]
 script = ExtResource("1_c13kl")
-timer = NodePath("Timer")
-weapon_name = "Bomb"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2119523896]
+shape = SubResource("BoxShape3D_dg7wh")
 
 [node name="bomb" parent="." unique_id=1913251837 instance=ExtResource("2_gkcqu")]
+transform = Transform3D(0.3, 0, 0, 0, 0.1928363, 0.22981334, 0, -0.22981334, 0.1928363, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=803312206]
-shape = SubResource("BoxShape3D_6e8mt")
-
-[node name="Timer" type="Timer" parent="." unique_id=1944313355]
-wait_time = 2.0
+[node name="UpwardTimer" type="Timer" parent="." unique_id=1022021392]
+wait_time = 0.3
+one_shot = true
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

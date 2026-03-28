@@ -57,4 +57,51 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI" unique_id=617653164]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/VBoxContainer" unique_id=1428658711]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer" unique_id=1108265849]
+layout_mode = 2
+text = "Health:"
+horizontal_alignment = 1
+
+[node name="HealthUpdate" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer" unique_id=1856820599]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "5"
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PlayerUI/VBoxContainer" unique_id=1510248225]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer3" unique_id=2049156619]
+layout_mode = 2
+text = "Current Weapon: "
+horizontal_alignment = 1
+
+[node name="WeaponUpdate" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer3" unique_id=1470202042]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Wand"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerUI/VBoxContainer" unique_id=1283586502]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer2" unique_id=1135795011]
+layout_mode = 2
+text = "Ammo:"
+horizontal_alignment = 1
+
+[node name="AmmoUpdate" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer2" unique_id=2110509278]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "0"
+vertical_alignment = 1
+
 [connection signal="timeout" from="PlayerStateMachine/Hurt/ImmuneTimer" to="PlayerStateMachine/Hurt" method="_on_immune_timer_timeout"]

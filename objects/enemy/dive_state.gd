@@ -17,8 +17,12 @@ func _on_anim_stop():
 func enter() -> void:
 	if anim_text != null:
 		state_machine.anim_player.play(anim_text)
+
+func enable_hitbox():
 	state_machine.enemy.hitbox.monitoring = true
 
+func disable_hitbox():
+	state_machine.enemy.hitbox.monitoring = false
 
 func stop_charge():
 	state_machine.anim_player.stop()
@@ -36,9 +40,9 @@ func physics_update(_delta: float) -> void:
 	
 	var distance: float = state_machine.get_distance()
 	
-	if distance < 1.8:
-		stop_charge()
+	if distance < 1.6:
+		state_machine.anim_player.play("metarig|ATTACK")
 
 func exit():
-	state_machine.enemy.hitbox.monitoring = false
+	disable_hitbox()
 	

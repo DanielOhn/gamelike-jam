@@ -1,7 +1,7 @@
 extends State
 class_name WindupState
 
-@export var height: float = 10.0
+@export var height: float = 8.0
 @export var fly_speed: float = 3
 @export var exit_state: State
 @export var anim_name: String

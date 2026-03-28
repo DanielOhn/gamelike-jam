@@ -4,7 +4,7 @@ class_name BeamAttack
 var fire_beam: bool = false
 @export var beam_cooldown: Timer
 @export var laser_beam: Node3D
-@onready var checker = $"../../skull-weapon2/Checker"
+@onready var checker = $"../../skull-weapon/Checker"
 
 func _ready():
 	beam_cooldown.wait_time = state_machine.fire_rate
@@ -20,16 +20,10 @@ func shoot_beam():
 	var query = PhysicsRayQueryParameters3D.create(from, to)
 	
 	var result = space_state.intersect_ray(query)
-	#print(origin_pos)
-	print(result)
-	#print(laser_beam.scale.z)
-	#laser_beam.look_at(Vector3(origin_pos.x, origin_pos.y, to.z))
+	
 	laser_beam.scale.z = 100
 	laser_beam.look_at(to)
-	#laser_beam.scale.z = to.z * 2
 	checker.position = from
-	#print(from)
-	#print(laser_beam.scale.z)
 	
 	if result:
 		var collide = result["collider"]
@@ -51,8 +45,8 @@ func physics_update(_delta: float) -> void:
 	
 	
 func exit():
-	state_machine.anim_player.stop()
 	laser_beam.visible = false
 	fire_beam = false
 	state_machine.anim_player.play("EndAttack")
+	await state_machine.anim_player.animation_finished
 	

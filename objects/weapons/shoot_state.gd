@@ -9,6 +9,7 @@ func enter():
 	spawn_bullet(projectile)
 	state_machine.current_ammo -= 1
 	state_machine.anim_player.play(anim_name)
+	await state_machine.anim_player.animation_finished
 	state_machine.switch_state(exit_state)
 	
 func spawn_bullet(projectile):
