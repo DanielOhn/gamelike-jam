@@ -3,6 +3,10 @@ class_name MoveState
 
 @export var attack_cooldown: Timer
 
+@export var attack_state: State
+@export var ready_state: State
+@export var anim_text: String
+
 #@onready var state_machine = get_parent()
 # Called when the node enters the scene tree for the first time.
 
@@ -17,22 +21,14 @@ func approach(_delta):
 	
 	var distance: float = state_machine.get_distance()
 	
-	if attack_cooldown.is_stopped():
-		state_machine.switch_state(state_machine.find_child("ChargeState"))
+	if attack_cooldown.is_stopped() and distance < 1.5:
+		state_machine.switch_state(attack_state)
 	if distance > 20.0:
-		state_machine.switch_state(state_machine.find_child("IdleState"))
+		state_machine.switch_state(ready_state)
 
-
-	
-#func turn_to_player():
-	#var turn_tween: Tween = create_tween()
-	#
-	##turn_tween.tween_property(state_machine.enemy, "rotation", state_machine.enemy.rotation, 1)
-	##turn_tween.tween_property()
-	#await turn_tween.finished
 
 func enter():
-	state_machine.anim_player.play("walk")
+	state_machine.anim_player.play(anim_text)
 
 
 func physics_update(_delta):

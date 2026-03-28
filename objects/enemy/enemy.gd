@@ -9,7 +9,6 @@ class_name Enemy
 @export var hurt_state: State
 
 
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
