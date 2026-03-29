@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://37tyq6f14h3b" path="res://blender/box_Material.png" id="7_4tkup"]
 [ext_resource type="PackedScene" uid="uid://cuewkw2f5epjx" path="res://objects/enemy/sphinx.tscn" id="7_wnm7q"]
 [ext_resource type="Texture2D" uid="uid://dpmcafd0o6dia" path="res://blender/box_Material_2.png" id="8_xsg4u"]
+[ext_resource type="PackedScene" uid="uid://clc8ljpistp72" path="res://objects/pots/blue_pot.tscn" id="13_8puai"]
+[ext_resource type="PackedScene" uid="uid://dpjyalgc5hqqq" path="res://objects/pots/blue_pressure_plate.tscn" id="14_gv2x6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8sil"]
 albedo_color = Color(0.26503062, 0.40081054, 0.46158445, 1)
@@ -490,6 +492,20 @@ _data = {
 
 [node name="DebugLevel" type="Node3D" unique_id=8875651]
 
+[node name="Enemies" type="Node3D" parent="." unique_id=1876363392]
+
+[node name="Minotaur" parent="Enemies" unique_id=1005086158 instance=ExtResource("3_8d50e")]
+transform = Transform3D(0.32006738, 0, 0.9473948, 0, 1, 0, -0.9473948, 0, 0.32006738, 7.774233, 1, -49.189)
+
+[node name="Sphinx" parent="Enemies" unique_id=222450785 instance=ExtResource("7_wnm7q")]
+transform = Transform3D(0.4217797, 0, 0.90669835, 0, 1, 0, -0.90669835, 0, 0.4217797, -31.946632, 1.3026104, -59.61187)
+
+[node name="Gargoyle" parent="Enemies" unique_id=930068618 instance=ExtResource("4_iwus7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.284028, 0.7931189, -64.61781)
+
+[node name="Harpy" parent="Enemies" unique_id=895039023 instance=ExtResource("5_ciaof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.781445, 3.9280453, -63.818466)
+
 [node name="LevelObejcts" type="Node3D" parent="." unique_id=1679641268]
 
 [node name="BombPickup" parent="LevelObejcts" unique_id=2067040914 instance=ExtResource("1_ahmjg")]
@@ -500,6 +516,9 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 22.825172, 0.75, -59.72
 
 [node name="HealthPotion" parent="LevelObejcts" unique_id=1974771396 instance=ExtResource("3_jomtx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.06374, 0.75, -59.880302)
+
+[node name="BluePot" parent="LevelObejcts" unique_id=206571771 instance=ExtResource("13_8puai")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.811277, 1.2689946, -72.68938)
 
 [node name="Level" type="StaticBody3D" parent="." unique_id=880670047]
 
@@ -522,20 +541,6 @@ light_energy = 2.0
 
 [node name="maze" parent="." unique_id=1910045750 instance=ExtResource("2_6or15")]
 transform = Transform3D(500, 0, 0, 0, 250, 0, 0, 0, 500, 0, 6, 0)
-
-[node name="Enemies" type="Node3D" parent="." unique_id=1876363392]
-
-[node name="Minotaur" parent="Enemies" unique_id=1005086158 instance=ExtResource("3_8d50e")]
-transform = Transform3D(0.32006738, 0, 0.9473948, 0, 1, 0, -0.9473948, 0, 0.32006738, 7.774233, 1, -49.189)
-
-[node name="Sphinx" parent="Enemies" unique_id=222450785 instance=ExtResource("7_wnm7q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.778694, 1.3026104, -67.93147)
-
-[node name="Gargoyle" parent="Enemies" unique_id=930068618 instance=ExtResource("4_iwus7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.284028, 0.7931189, -64.61781)
-
-[node name="Harpy" parent="Enemies" unique_id=895039023 instance=ExtResource("5_ciaof")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.781445, 3.9280453, -63.818466)
 
 [node name="PandorasBox" type="Node3D" parent="." unique_id=46640741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49488986, 0)
@@ -567,3 +572,6 @@ mesh = SubResource("ArrayMesh_5nkcc")
 
 [node name="BoxAnimation" type="AnimationPlayer" parent="PandorasBox/box" unique_id=965813605]
 libraries/ = SubResource("AnimationLibrary_tyatj")
+
+[node name="BluePressurePlate" parent="." unique_id=382189512 instance=ExtResource("14_gv2x6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.15593636, -71)

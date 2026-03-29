@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://clc8ljpistp72"]
+
+[ext_resource type="Script" uid="uid://bq6qtq24c4mic" path="res://objects/pots/pot.gd" id="1_rss3e"]
+[ext_resource type="PackedScene" uid="uid://joe63widsqxa" path="res://blender/bluepot.blend" id="2_ejk1n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rss3e"]
+size = Vector3(1.6, 1.75, 1.6)
+
+[node name="BluePot" type="RigidBody3D" unique_id=1569354647]
+script = ExtResource("1_rss3e")
+
+[node name="bluepot" parent="." unique_id=700845932 instance=ExtResource("2_ejk1n")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1597954284]
+shape = SubResource("BoxShape3D_rss3e")
