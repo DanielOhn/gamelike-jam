@@ -13,3 +13,6 @@ script = ExtResource("1_6votf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433195980]
 shape = SubResource("BoxShape3D_wx7d8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
