@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b456oqx42oe2f"]
+
+[ext_resource type="Script" uid="uid://btqnarojdkyws" path="res://objects/pots/pressure_plate.gd" id="1_6votf"]
+[ext_resource type="PackedScene" uid="uid://dm00ek2p0ehtg" path="res://blender/redpressure plate.blend" id="2_84r8q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wx7d8"]
+size = Vector3(1.8, 0.2, 1.8)
+
+[node name="RedPressurePlate" type="Area3D" unique_id=1969679508]
+script = ExtResource("1_6votf")
+
+[node name="redpressure plate" parent="." unique_id=339531462 instance=ExtResource("2_84r8q")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433195980]
+shape = SubResource("BoxShape3D_wx7d8")

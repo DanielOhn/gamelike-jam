@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://s4xdk2eb15yv"]
+
+[ext_resource type="Script" uid="uid://bq6qtq24c4mic" path="res://objects/pots/pot.gd" id="1_km0sm"]
+[ext_resource type="PackedScene" uid="uid://eavhfbi1t5bb" path="res://blender/redpot.blend" id="2_x5xr5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5cauf"]
+size = Vector3(1.6, 1.75, 1.6)
+
+[node name="RedPot" type="RigidBody3D" unique_id=1414894610]
+script = ExtResource("1_km0sm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=377546038]
+shape = SubResource("BoxShape3D_5cauf")
+
+[node name="redpot" parent="." unique_id=865684510 instance=ExtResource("2_x5xr5")]

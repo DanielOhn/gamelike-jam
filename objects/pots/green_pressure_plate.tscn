@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cbk4xmox2paso"]
+
+[ext_resource type="PackedScene" uid="uid://byhqj68f72d2j" path="res://blender/greenpressureplate.blend" id="1_isgov"]
+[ext_resource type="Script" uid="uid://btqnarojdkyws" path="res://objects/pots/pressure_plate.gd" id="1_wx7d8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wx7d8"]
+size = Vector3(1.8, 0.2, 1.8)
+
+[node name="GreenPressurePlate" type="Area3D" unique_id=998269086]
+script = ExtResource("1_wx7d8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1590318275]
+shape = SubResource("BoxShape3D_wx7d8")
+
+[node name="greenpressureplate" parent="." unique_id=1061768209 instance=ExtResource("1_isgov")]
