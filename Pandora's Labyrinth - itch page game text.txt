@@ -1,0 +1,13 @@
+Pandora's Labyrinth - A Game for the Gamelike-jam "Wolfenstein 3-D"
+
+You are under the command of an evil wizard, who has instructed you to open Pandora's Box so that he may extract his revenge upon the city who scorned him... Fight through enemies and open the gates to reach the centre of the Labyrinth, where your "prize" awaits you.
+
+Controls:
+WASD to move
+Click/click and hold to fire
+R to reload
+
+All coding, as well as weapons and pickup models by: Catsby
+Intro/portrait art, enemies models & animations, some other misc models by: Maus Oz
+Music and sound effects: Outsourced from Zapsplat (CC4.0) and GDC (CC0)
+
