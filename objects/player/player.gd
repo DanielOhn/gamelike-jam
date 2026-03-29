@@ -25,7 +25,6 @@ func _physics_process(delta):
 	for i in get_slide_collision_count():
 		var collide = get_slide_collision(i)
 		if collide.get_collider() is Pot:
-			print(collide, collide.get_collider())
 			var pot: Pot = collide.get_collider()
 			pot.apply_central_impulse(-collide.get_normal())
 

@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://clc8ljpistp72" path="res://objects/pots/blue_pot.tscn" id="13_8puai"]
 [ext_resource type="PackedScene" uid="uid://b456oqx42oe2f" path="res://objects/pots/red_pressure_plate.tscn" id="13_ow684"]
 [ext_resource type="PackedScene" uid="uid://dpjyalgc5hqqq" path="res://objects/pots/blue_pressure_plate.tscn" id="14_gv2x6"]
+[ext_resource type="PackedScene" uid="uid://dnce0pr27t1sq" path="res://objects/pots/gate.tscn" id="14_ud8sp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8sil"]
 albedo_color = Color(0.26503062, 0.40081054, 0.46158445, 1)
@@ -527,17 +528,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.811277, 1.2689946, -72.689
 [node name="GreenPot" parent="LevelObejcts" unique_id=1029062730 instance=ExtResource("9_8qey6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.374653, 1, -68.65235)
 
-[node name="BluePressurePlate" parent="LevelObejcts" unique_id=382189512 instance=ExtResource("14_gv2x6")]
+[node name="BluePressurePlate" parent="LevelObejcts" unique_id=382189512 node_paths=PackedStringArray("gate") instance=ExtResource("14_gv2x6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.15, -71)
+gate = NodePath("../../Level/Gate")
 
-[node name="GreenPressurePlate" parent="LevelObejcts" unique_id=998269086 instance=ExtResource("11_5vwqk")]
+[node name="GreenPressurePlate" parent="LevelObejcts" unique_id=998269086 node_paths=PackedStringArray("gate") instance=ExtResource("11_5vwqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.15, -72)
+gate = NodePath("../../Level/Gate")
 
 [node name="RedPot" parent="LevelObejcts" unique_id=1414894610 instance=ExtResource("12_ud8sp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 1, -79)
 
-[node name="RedPressurePlate" parent="LevelObejcts" unique_id=1969679508 instance=ExtResource("13_ow684")]
+[node name="RedPressurePlate" parent="LevelObejcts" unique_id=1969679508 node_paths=PackedStringArray("gate") instance=ExtResource("13_ow684")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.221, 0.15, -79.026)
+gate = NodePath("../../Level/Gate")
 
 [node name="Level" type="StaticBody3D" parent="." unique_id=880670047]
 
@@ -548,6 +552,9 @@ mesh = SubResource("PlaneMesh_b7jps")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level" unique_id=1495173310]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011669159, 0.09048605, 0.14473152)
 shape = SubResource("ConcavePolygonShape3D_5vwqk")
+
+[node name="Gate" parent="Level" unique_id=1591295292 instance=ExtResource("14_ud8sp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -74)
 
 [node name="Player" parent="." unique_id=1089648825 instance=ExtResource("1_ln2x5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -68.84233)
