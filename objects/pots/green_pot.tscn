@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d3ayfbbqlnb84"]
+
+[ext_resource type="Script" uid="uid://bq6qtq24c4mic" path="res://objects/pots/pot.gd" id="1_uvpdb"]
+[ext_resource type="PackedScene" uid="uid://ckycd0l5ad4q0" path="res://blender/greenpot.blend" id="2_uw8i6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4s706"]
+size = Vector3(1.6, 1.75, 1.6)
+
+[node name="GreenPot" type="RigidBody3D" unique_id=1029062730]
+script = ExtResource("1_uvpdb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1322234076]
+shape = SubResource("BoxShape3D_4s706")
+
+[node name="greenpot" parent="." unique_id=237685173 instance=ExtResource("2_uw8i6")]
