@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://sqcuf4po2tq0"]
+
+[node name="MainMenu" type="Node3D" unique_id=578145689]
+
+[node name="Control" type="Control" parent="." unique_id=1575687970]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Control" unique_id=1696612774]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -59.0
+offset_top = 95.0
+offset_right = 59.0
+offset_bottom = 118.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "Title Goes Here"
+
+[node name="PlayButton" type="Button" parent="Control" unique_id=218668633]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -207.0
+offset_right = 256.0
+offset_bottom = -165.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Play"

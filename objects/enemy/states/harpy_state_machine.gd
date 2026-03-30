@@ -10,6 +10,6 @@ func _process(delta):
 
 
 func _on_scan_area_body_entered(body):
-	if body is Player:
+	if body is Player and current_state != DeadState:
 		target = body
 		switch_state(target_found_state)

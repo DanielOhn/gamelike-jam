@@ -15,11 +15,3 @@ func _on_hitbox_body_entered(body):
 	if body is Player:
 		body.hurt(damage)
 		
-func hurt(dmg: float, pos: Vector3):
-	look_at(pos)
-	health = health - dmg
-	if health <= 0:
-		print_debug(self, "Dead")
-		queue_free()
-	else:
-		state_machine.switch_state(hurt_state)

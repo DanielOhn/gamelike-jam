@@ -12,4 +12,4 @@ func reset():
 
 func drop():
 	var drop_tween: Tween = create_tween()
-	drop_tween.tween_property(self, "position:y", position.y - 5, 1)
+	drop_tween.tween_property(self, "position:y", position.y - 20, 1)

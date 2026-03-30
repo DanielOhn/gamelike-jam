@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://i6pxrs3b0e3"]
+
+[ext_resource type="Script" uid="uid://bqgfitnwsnqg4" path="res://scripts/change_scene.gd" id="1_erk2x"]
+[ext_resource type="Texture2D" uid="uid://de5ljcta2vrio" path="res://win scene image.png" id="1_wv5lq"]
+
+[node name="WinScreen" type="Control" unique_id=1103196756]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_erk2x")
+path = "res://scenes/main_menu.tscn"
+
+[node name="Image" type="TextureRect" parent="." unique_id=632596716]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wv5lq")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1672272278]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_top = 116.0
+offset_right = 67.0
+offset_bottom = 161.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 32
+text = "You Win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=789154478]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.446
+anchor_top = 0.87500006
+anchor_right = 0.554
+anchor_bottom = 0.933
+offset_left = 21.119995
+offset_top = 10.999939
+offset_right = -21.119995
+offset_bottom = 0.23999023
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

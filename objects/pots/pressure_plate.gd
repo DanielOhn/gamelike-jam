@@ -8,7 +8,7 @@ func _ready():
 
 func drop_plate():
 	var drop_tween: Tween = create_tween()
-	drop_tween.tween_property(self, "position:y", starting_pos.y - .12, .5)
+	drop_tween.tween_property(self, "position:y", starting_pos.y - .08, .5)
 	
 	gate.drop()
 

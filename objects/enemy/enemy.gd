@@ -7,6 +7,7 @@ class_name Enemy
 
 @export var state_machine: EnemyStateMachine
 @export var hurt_state: State
+@export var dead_state: State
 
 
 func _physics_process(delta):
@@ -15,10 +16,12 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 		
 func hurt(dmg: float, pos: Vector3):
-	look_at(pos)
-	health = health - dmg
 	if health <= 0:
-		print_debug(self, "Dead")
-		queue_free()
+		#queue_free()
+		if state_machine.anim_player:
+			state_machine.anim_player.stop()
+		state_machine.switch_state(dead_state)
 	else:
+		look_at(pos)
+		health = health - dmg
 		state_machine.switch_state(hurt_state)

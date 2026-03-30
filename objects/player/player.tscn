@@ -104,4 +104,9 @@ size_flags_horizontal = 2
 text = "0"
 vertical_alignment = 1
 
+[node name="SoundEffects" type="AudioStreamPlayer3D" parent="." unique_id=466022238]
+autoplay = true
+
+[node name="Music" type="AudioStreamPlayer3D" parent="." unique_id=1370655970]
+
 [connection signal="timeout" from="PlayerStateMachine/Hurt/ImmuneTimer" to="PlayerStateMachine/Hurt" method="_on_immune_timer_timeout"]

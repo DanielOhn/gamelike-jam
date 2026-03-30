@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://doh7mr3lkbbab"]
+
+[ext_resource type="Script" uid="uid://bqgfitnwsnqg4" path="res://scripts/change_scene.gd" id="1_61w2s"]
+[ext_resource type="Texture2D" uid="uid://baq8754fuvglu" path="res://lose scene image.png" id="1_iwahs"]
+
+[node name="GameOverScreen" type="Control" unique_id=1306616418]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61w2s")
+path = "res://scenes/Level.tscn"
+
+[node name="TextEdit" type="TextureRect" parent="." unique_id=171255651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iwahs")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="." unique_id=1810428369]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = -63.0
+offset_right = 46.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

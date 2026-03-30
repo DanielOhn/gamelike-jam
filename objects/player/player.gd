@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 4.5
 
 @onready var health_update = $PlayerUI/VBoxContainer/HBoxContainer/HealthUpdate
 
-@export var health: float = 25
+@export var health: float = 100
 @export var mouse_sensitivty: float = .1
 
 @onready var weapon_slot: WeaponSlot = $WeaponSlot

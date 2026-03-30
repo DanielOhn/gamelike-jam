@@ -6,6 +6,7 @@ class_name MoveState
 @export var attack_state: State
 @export var ready_state: State
 @export var anim_text: String
+@export var attack_distance: float
 
 #@onready var state_machine = get_parent()
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +22,7 @@ func approach(_delta):
 	
 	var distance: float = state_machine.get_distance()
 	
-	if attack_cooldown.is_stopped() and distance < 1.5:
+	if attack_cooldown.is_stopped() and distance < attack_distance:
 		state_machine.switch_state(attack_state)
 	if distance > 20.0:
 		state_machine.switch_state(ready_state)

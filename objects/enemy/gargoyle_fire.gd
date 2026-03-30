@@ -5,8 +5,10 @@ class_name GargoyleFireState
 @export var fireball_cooldown: Timer
 
 func enter():
-	#state_machine.switch_state(GargoyleIdle)
 	fireball_cooldown.start()
+	
+func exit():
+	fireball_cooldown.stop()
 	
 
 func spawn_fireball():
