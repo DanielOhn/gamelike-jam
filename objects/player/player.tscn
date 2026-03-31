@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://5cn3iyfxi613" path="res://objects/player/player.gd" id="1_cqmt1"]
 [ext_resource type="Script" uid="uid://croctacj4tb34" path="res://objects/weapons/weapon_slot.gd" id="2_g7ett"]
 [ext_resource type="PackedScene" uid="uid://ciqfyty6cd6cb" path="res://objects/weapons/wand.tscn" id="3_ow0dq"]
+[ext_resource type="Script" uid="uid://cdm7sr25l4325" path="res://objects/player/game_over.gd" id="8_m4kly"]
+[ext_resource type="Script" uid="uid://dahdevb5hbw38" path="res://objects/player/pause_menu.gd" id="9_bi5m7"]
+[ext_resource type="AudioStream" uid="uid://dhwqn6pltlvxt" path="res://sounds/music/Zapsplat - Music - Main Game Theme.mp3" id="9_psowp"]
 [ext_resource type="Script" uid="uid://duc21dhgr1ncm" path="res://objects/player/states/player_state_machine.gd" id="9_xgwla"]
 [ext_resource type="Script" uid="uid://dxgs10llo1fof" path="res://objects/player/states/play.gd" id="10_bi5m7"]
 [ext_resource type="Script" uid="uid://sxjs7jd7l2v" path="res://objects/player/states/pause.gd" id="10_psowp"]
@@ -36,8 +39,9 @@ script = ExtResource("2_g7ett")
 process_mode = 3
 script = ExtResource("9_xgwla")
 
-[node name="Pause" type="Node" parent="PlayerStateMachine" unique_id=1911556558]
+[node name="Pause" type="Node" parent="PlayerStateMachine" unique_id=1911556558 node_paths=PackedStringArray("pause_menu")]
 script = ExtResource("10_psowp")
+pause_menu = NodePath("../../PauseMenu")
 
 [node name="Play" type="Node" parent="PlayerStateMachine" unique_id=2107912122]
 script = ExtResource("10_bi5m7")
@@ -48,6 +52,9 @@ script = ExtResource("12_45urx")
 [node name="ImmuneTimer" type="Timer" parent="PlayerStateMachine/Hurt" unique_id=1239425301]
 wait_time = 2.0
 one_shot = true
+
+[node name="GameOver" type="Node" parent="PlayerStateMachine" unique_id=2057889306]
+script = ExtResource("8_m4kly")
 
 [node name="PlayerUI" type="Control" parent="." unique_id=781118678]
 layout_mode = 3
@@ -104,9 +111,54 @@ size_flags_horizontal = 2
 text = "0"
 vertical_alignment = 1
 
-[node name="SoundEffects" type="AudioStreamPlayer3D" parent="." unique_id=466022238]
+[node name="Sounds" type="Node" parent="." unique_id=1932499621]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sounds" unique_id=1965685340]
+stream = ExtResource("9_psowp")
+volume_db = -20.0
 autoplay = true
 
-[node name="Music" type="AudioStreamPlayer3D" parent="." unique_id=1370655970]
+[node name="SoundEffects" type="AudioStreamPlayer" parent="Sounds" unique_id=1238827458]
+
+[node name="PauseMenu" type="Control" parent="." unique_id=86862003 node_paths=PackedStringArray("player_state_machine")]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_bi5m7")
+player_state_machine = NodePath("../PlayerStateMachine")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu" unique_id=84357009]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -41.0
+offset_right = 48.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=11002942]
+layout_mode = 2
+text = "Resume
+"
+
+[node name="HSeparator" type="HSeparator" parent="PauseMenu/VBoxContainer" unique_id=2133840308]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MenuButton" type="Button" parent="PauseMenu/VBoxContainer" unique_id=770362769]
+layout_mode = 2
+text = "Main Menu"
 
 [connection signal="timeout" from="PlayerStateMachine/Hurt/ImmuneTimer" to="PlayerStateMachine/Hurt" method="_on_immune_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/ResumeButton" to="PauseMenu" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/MenuButton" to="PauseMenu" method="_on_menu_button_pressed"]

@@ -10,4 +10,3 @@ R to reload
 All coding, as well as weapons and pickup models by: Catsby
 Intro/portrait art, enemies models & animations, some other misc models by: Maus Oz
 Music and sound effects: Outsourced from Zapsplat (CC4.0) and GDC (CC0)
-

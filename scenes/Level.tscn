@@ -711,7 +711,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.130331, 0)
 shape = SubResource("BoxShape3D_iw3v5")
 
 [node name="Player" parent="." unique_id=1089648825 instance=ExtResource("17_nu2gi")]
-transform = Transform3D(-0.9903069, 0, -0.13889647, 0, 1, 0, 0.13889647, 0, -0.9903069, 4.3620653, 1, -76.29103)
+transform = Transform3D(-0.9903069, 0, -0.13889647, 0, 1, 0, 0.13889647, 0, -0.9903069, -3.4532595, 1, 6.4653873)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1918869047]
 environment = SubResource("Environment_ln2x5")

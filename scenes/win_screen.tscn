@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqgfitnwsnqg4" path="res://scripts/change_scene.gd" id="1_erk2x"]
 [ext_resource type="Texture2D" uid="uid://de5ljcta2vrio" path="res://win scene image.png" id="1_wv5lq"]
+[ext_resource type="AudioStream" uid="uid://j3mhbu6uiw5k" path="res://sounds/music/Zapsplat - Music - Win Theme.mp3" id="3_2l6cc"]
 
 [node name="WinScreen" type="Control" unique_id=1103196756]
 layout_mode = 3
@@ -54,5 +55,10 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=557515536]
+stream = ExtResource("3_2l6cc")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

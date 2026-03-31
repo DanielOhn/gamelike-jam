@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var damage: float = 3.0
+@export var damage: float = 6.0
 
 func seek_target(target: Enemy):
 	var move_tween: Tween = create_tween()

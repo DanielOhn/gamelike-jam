@@ -5,7 +5,7 @@ class_name State
 signal state_finished(next_state: String)
 
 func enter() -> void:
-	print_debug(name)
+	pass
 	
 func exit() -> void:
 	pass

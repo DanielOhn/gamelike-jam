@@ -5,7 +5,6 @@ class_name PlayerHurtState
 
 func knockback():
 	var jump_direction = state_machine.player.global_transform.basis.z
-	print_debug(jump_direction)
 	
 	var knockback_tween: Tween = create_tween()
 	knockback_tween.tween_property(state_machine.player, "position:y", state_machine.player.position.y + 1, .1)
@@ -23,8 +22,7 @@ func hurt():
 	immune_timer.start()
 	state_machine.immune = true
 	if state_machine.player.health <= 0:
-		print("Game Over")
-		#get_tree().paused = true
+		state_machine.switch_state(state_machine.find_child("GameOver"))
 	else:
 		state_machine.switch_state(state_machine.find_child("Play"))
 

@@ -17,7 +17,6 @@ func _physics_process(delta):
 		
 func hurt(dmg: float, pos: Vector3):
 	if health <= 0:
-		#queue_free()
 		if state_machine.anim_player:
 			state_machine.anim_player.stop()
 		state_machine.switch_state(dead_state)

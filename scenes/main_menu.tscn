@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://sqcuf4po2tq0"]
 
+[ext_resource type="Script" uid="uid://cnsmgy46eo6ae" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://dj5impayyirgq" path="res://sounds/music/GDC - Ambient Menu Bg sound.wav" id="2_ekxnf"]
+
 [node name="MainMenu" type="Node3D" unique_id=578145689]
+script = ExtResource("1_l6cm7")
 
 [node name="Control" type="Control" parent="." unique_id=1575687970]
 layout_mode = 3
@@ -22,7 +26,7 @@ offset_bottom = 118.0
 grow_horizontal = 2
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 32
-text = "Title Goes Here"
+text = "Pandora's Labyrinth"
 
 [node name="PlayButton" type="Button" parent="Control" unique_id=218668633]
 layout_mode = 1
@@ -36,3 +40,9 @@ offset_bottom = -165.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=697856687]
+stream = ExtResource("2_ekxnf")
+autoplay = true
+
+[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
