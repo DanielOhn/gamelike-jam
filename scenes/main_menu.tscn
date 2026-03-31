@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bvgu3fjmvbdwp" path="res://scripts/pandora_box.gd" id="6_jk1qb"]
 [ext_resource type="Texture2D" uid="uid://bdltqe3x2ja0s" path="res://blender/box_Material Base Color.png" id="7_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://37tyq6f14h3b" path="res://blender/box_Material.png" id="8_lgwnu"]
+[ext_resource type="VideoStream" uid="uid://ckr21mjg2yxio" path="res://Pandora.ogv" id="9_5dd4i"]
 [ext_resource type="Texture2D" uid="uid://dpmcafd0o6dia" path="res://blender/box_Material_2.png" id="9_flqon"]
 
 [sub_resource type="Environment" id="Environment_wu84c"]
@@ -560,6 +561,17 @@ grow_horizontal = 2
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 72
 text = "Pandora's Labyrinth"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control" unique_id=921954660]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("9_5dd4i")
+expand = true
 
 [node name="PlayButton" type="Button" parent="Control" unique_id=218668633]
 layout_mode = 1
