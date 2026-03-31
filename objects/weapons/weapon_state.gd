@@ -2,7 +2,8 @@ extends StateMachine
 class_name WeaponStateMachine
 
 @export var current_ammo: int = 8
-@export var max_ammo: int = 8
+@export var max_clip: int = 8
+@export var total_ammo: int = INF
 @export var ammo_capacity: int = INF
 
 
@@ -25,6 +26,11 @@ func enable():
 
 func disable():
 	switch_state(disable_state)
+	
+func add_ammo(amount: int):
+	if total_ammo != INF:
+		total_ammo += amount
+		total_ammo = clamp(total_ammo, 0, ammo_capacity)
 
 
 func _input(event):
@@ -36,6 +42,6 @@ func _input(event):
 			player.rotation.x = clamp(player.rotation.x, -.5, .8)
 			
 			#rotation_object_local(Vector3(0, 1, 0), -rotation.x)
-		if event is InputEventMouseButton and current_state == start_state:
+		if event is InputEventMouseButton and current_state == start_state and current_ammo > 0:
 			if event.pressed and event.button_index == 1 or event.is_pressed() and event.button_index == 1:
 				switch_state(fire_state)

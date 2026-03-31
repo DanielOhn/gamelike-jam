@@ -3,13 +3,21 @@
 [ext_resource type="Script" uid="uid://5cn3iyfxi613" path="res://objects/player/player.gd" id="1_cqmt1"]
 [ext_resource type="Script" uid="uid://croctacj4tb34" path="res://objects/weapons/weapon_slot.gd" id="2_g7ett"]
 [ext_resource type="PackedScene" uid="uid://ciqfyty6cd6cb" path="res://objects/weapons/wand.tscn" id="3_ow0dq"]
+[ext_resource type="AudioStream" uid="uid://btpl805qvfg74" path="res://sounds/sfx/player incl weapons n potions/Zapsplat - Player Walk.mp3" id="7_xlkbi"]
 [ext_resource type="Script" uid="uid://cdm7sr25l4325" path="res://objects/player/game_over.gd" id="8_m4kly"]
 [ext_resource type="Script" uid="uid://dahdevb5hbw38" path="res://objects/player/pause_menu.gd" id="9_bi5m7"]
 [ext_resource type="AudioStream" uid="uid://dhwqn6pltlvxt" path="res://sounds/music/Zapsplat - Music - Main Game Theme.mp3" id="9_psowp"]
 [ext_resource type="Script" uid="uid://duc21dhgr1ncm" path="res://objects/player/states/player_state_machine.gd" id="9_xgwla"]
 [ext_resource type="Script" uid="uid://dxgs10llo1fof" path="res://objects/player/states/play.gd" id="10_bi5m7"]
 [ext_resource type="Script" uid="uid://sxjs7jd7l2v" path="res://objects/player/states/pause.gd" id="10_psowp"]
+[ext_resource type="Texture2D" uid="uid://ciccamn7ff0r1" path="res://objects/player/DefaultAvatar.png" id="11_psowp"]
 [ext_resource type="Script" uid="uid://dyecna6atayvx" path="res://objects/player/hurt.gd" id="12_45urx"]
+[ext_resource type="Texture2D" uid="uid://djpgb68gbvkqf" path="res://blender/textures/health_red.png" id="12_c34wb"]
+[ext_resource type="Texture2D" uid="uid://bf17j8e5r0tud" path="res://blender/textures/health_green.png" id="13_45rsp"]
+[ext_resource type="Script" uid="uid://dnq6x4ai8i7rc" path="res://scripts/rotate.gd" id="14_dthqj"]
+[ext_resource type="PackedScene" uid="uid://dh62a2x4lu1kf" path="res://blender/weapons/skull.fbx" id="15_xlkbi"]
+[ext_resource type="PackedScene" uid="uid://cxi7cvj2sppbq" path="res://blender/weapons/bomb.fbx" id="16_l55sg"]
+[ext_resource type="PackedScene" uid="uid://vhku3fjxf1kj" path="res://blender/weapons/Wand.fbx" id="17_28utn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxedw"]
 
@@ -29,15 +37,17 @@ mesh = SubResource("CapsuleMesh_eqqp1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.2)
 current = true
 
-[node name="WeaponSlot" type="Node3D" parent="." unique_id=427299998]
+[node name="WeaponSlot" type="Node3D" parent="." unique_id=427299998 node_paths=PackedStringArray("view_weapon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456, 0.165, -0.55)
 script = ExtResource("2_g7ett")
+view_weapon = NodePath("../UI/SubViewportContainer/SubViewport/ViewWeapon/Weapons")
 
 [node name="Wand" parent="WeaponSlot" unique_id=1907342257 instance=ExtResource("3_ow0dq")]
 
-[node name="PlayerStateMachine" type="Node" parent="." unique_id=1320786724]
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1320786724 node_paths=PackedStringArray("sound_player")]
 process_mode = 3
 script = ExtResource("9_xgwla")
+sound_player = NodePath("../Sounds/SoundEffects")
 
 [node name="Pause" type="Node" parent="PlayerStateMachine" unique_id=1911556558 node_paths=PackedStringArray("pause_menu")]
 script = ExtResource("10_psowp")
@@ -45,6 +55,7 @@ pause_menu = NodePath("../../PauseMenu")
 
 [node name="Play" type="Node" parent="PlayerStateMachine" unique_id=2107912122]
 script = ExtResource("10_bi5m7")
+walk_sound = ExtResource("7_xlkbi")
 
 [node name="Hurt" type="Node" parent="PlayerStateMachine" unique_id=1845458891]
 script = ExtResource("12_45urx")
@@ -56,61 +67,6 @@ one_shot = true
 [node name="GameOver" type="Node" parent="PlayerStateMachine" unique_id=2057889306]
 script = ExtResource("8_m4kly")
 
-[node name="PlayerUI" type="Control" parent="." unique_id=781118678]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI" unique_id=617653164]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/VBoxContainer" unique_id=1428658711]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer" unique_id=1108265849]
-layout_mode = 2
-text = "Health:"
-horizontal_alignment = 1
-
-[node name="HealthUpdate" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer" unique_id=1856820599]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "5"
-vertical_alignment = 1
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="PlayerUI/VBoxContainer" unique_id=1510248225]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer3" unique_id=2049156619]
-layout_mode = 2
-text = "Current Weapon: "
-horizontal_alignment = 1
-
-[node name="WeaponUpdate" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer3" unique_id=1470202042]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Wand"
-vertical_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PlayerUI/VBoxContainer" unique_id=1283586502]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer2" unique_id=1135795011]
-layout_mode = 2
-text = "Ammo:"
-horizontal_alignment = 1
-
-[node name="AmmoUpdate" type="Label" parent="PlayerUI/VBoxContainer/HBoxContainer2" unique_id=2110509278]
-layout_mode = 2
-size_flags_horizontal = 2
-text = "0"
-vertical_alignment = 1
-
 [node name="Sounds" type="Node" parent="." unique_id=1932499621]
 
 [node name="Music" type="AudioStreamPlayer" parent="Sounds" unique_id=1965685340]
@@ -119,6 +75,129 @@ volume_db = -20.0
 autoplay = true
 
 [node name="SoundEffects" type="AudioStreamPlayer" parent="Sounds" unique_id=1238827458]
+stream = ExtResource("7_xlkbi")
+volume_db = -10.0
+max_polyphony = 2
+
+[node name="UI" type="Control" parent="." unique_id=1249125298]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI" unique_id=1277416606]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.105000004
+anchor_top = 0.65000004
+anchor_right = 0.26200002
+anchor_bottom = 0.92800003
+offset_left = 0.5999756
+offset_top = -3.0517578e-05
+offset_right = 799.63995
+offset_bottom = 799.83997
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_psowp")
+
+[node name="HealthBar" type="TextureProgressBar" parent="UI" unique_id=1145999300]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.106000006
+anchor_top = 0.933
+anchor_right = 0.41900003
+anchor_bottom = 0.95800006
+offset_left = 0.31999207
+offset_top = -1.7600098
+offset_right = 599.67993
+offset_bottom = 80.23993
+grow_vertical = 0
+scale = Vector2(0.4, 0.2)
+value = 100.0
+texture_under = ExtResource("12_c34wb")
+texture_progress = ExtResource("13_45rsp")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI" unique_id=1222706321]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.79800004
+anchor_top = 0.55700004
+anchor_right = 0.91600007
+anchor_bottom = 0.89000005
+offset_left = 62.559937
+offset_top = -0.040039063
+offset_right = 61.519897
+offset_bottom = 0.19995117
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer" unique_id=2070614036]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(150, 240)
+render_target_update_mode = 4
+
+[node name="ViewWeapon" type="Node3D" parent="UI/SubViewportContainer/SubViewport" unique_id=980215039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -100, 0)
+
+[node name="Weapons" type="Node3D" parent="UI/SubViewportContainer/SubViewport/ViewWeapon" unique_id=690630918 node_paths=PackedStringArray("weapon_slot")]
+script = ExtResource("14_dthqj")
+weapon_slot = NodePath("../../../../../WeaponSlot")
+
+[node name="Skull" parent="UI/SubViewportContainer/SubViewport/ViewWeapon/Weapons" unique_id=726859493 instance=ExtResource("15_xlkbi")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+visible = false
+
+[node name="Bomb" parent="UI/SubViewportContainer/SubViewport/ViewWeapon/Weapons" unique_id=1913251837 instance=ExtResource("16_l55sg")]
+visible = false
+
+[node name="Wand" parent="UI/SubViewportContainer/SubViewport/ViewWeapon/Weapons" unique_id=708467694 instance=ExtResource("17_28utn")]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -0.2733295, -0.8127849, 0)
+
+[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer/SubViewport/ViewWeapon" unique_id=742848676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6611831, 5.8274393)
+fov = 45.0
+
+[node name="Ammo" type="Label" parent="UI" unique_id=366458936]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86200005
+anchor_top = 0.86500007
+anchor_right = 0.93600005
+anchor_bottom = 0.924
+offset_left = -0.36010742
+offset_top = 0.19995117
+offset_right = -0.080078125
+offset_bottom = -0.2800293
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
+text = "Ammo"
+horizontal_alignment = 1
+
+[node name="TotalAmmo" type="Label" parent="UI" unique_id=2011106886]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89500004
+anchor_top = 0.88500005
+anchor_right = 0.98700005
+anchor_bottom = 0.924
+offset_left = -0.60009766
+offset_top = -0.2000122
+offset_right = -0.36010742
+offset_bottom = -0.2800293
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "Total Ammo"
+horizontal_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="." unique_id=86862003 node_paths=PackedStringArray("player_state_machine")]
 process_mode = 2

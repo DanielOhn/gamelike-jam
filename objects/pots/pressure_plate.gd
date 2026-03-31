@@ -2,6 +2,7 @@ extends Area3D
 
 @export var gate: Gate 
 var starting_pos: Vector3
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready():
 	starting_pos = position
@@ -21,6 +22,7 @@ func lift_plate():
 func _on_body_entered(body):
 	if body is Pot:
 		drop_plate()
+		audio_player.play()
 
 func _on_body_exited(body):
 	if body is Pot:

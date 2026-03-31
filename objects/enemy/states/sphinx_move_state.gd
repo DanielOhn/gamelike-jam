@@ -6,6 +6,10 @@ func approach(_delta):
 	if direction:
 		state_machine.enemy.velocity.x = direction.x * state_machine.enemy.speed
 		state_machine.enemy.velocity.z = direction.z * state_machine.enemy.speed
+		
+		if !state_machine.audio_player.playing:
+				state_machine.audio_player.stream = move_noise
+				state_machine.audio_player.play()
 	
 	state_machine.enemy.move_and_slide()
 	
@@ -13,5 +17,6 @@ func approach(_delta):
 	
 	if attack_cooldown.is_stopped() and distance < attack_distance:
 		state_machine.switch_state(attack_state)
-	if distance > 20.0:
+	elif distance > 15.0:
 		state_machine.switch_state(ready_state)
+		state_machine.target = null

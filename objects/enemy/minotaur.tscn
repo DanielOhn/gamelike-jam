@@ -4,9 +4,12 @@
 [ext_resource type="Script" uid="uid://c32gsu4u4rww6" path="res://objects/enemy/states/minotaur_state_machine.gd" id="2_a64q4"]
 [ext_resource type="Script" uid="uid://b051snpyeutvn" path="res://objects/enemy/states/idle_state.gd" id="3_ps7y2"]
 [ext_resource type="Script" uid="uid://bpralvyrvrbed" path="res://objects/enemy/states/charge_state.gd" id="4_bqw8k"]
+[ext_resource type="AudioStream" uid="uid://bmmuh7yditl3e" path="res://sounds/sfx/monsters/GDC - Minotaur - Attack maybe.wav" id="5_daqjv"]
 [ext_resource type="Script" uid="uid://ce2edvelhg6p1" path="res://objects/enemy/states/move_state.gd" id="6_72bdc"]
+[ext_resource type="AudioStream" uid="uid://bsk4ctm3eurex" path="res://sounds/sfx/monsters/Zapsplat - Minotaur - Run.wav" id="6_a64q4"]
 [ext_resource type="Script" uid="uid://bvhtj753mjbbo" path="res://objects/enemy/states/dead_state.gd" id="7_o0hr1"]
 [ext_resource type="Script" uid="uid://cw2bcgrj2svh0" path="res://objects/enemy/states/hurt_state.gd" id="7_tg7x6"]
+[ext_resource type="AudioStream" uid="uid://dkk60yxci11a6" path="res://sounds/sfx/monsters/GDC - Monster death noise.wav" id="10_buaqi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grvcm"]
 resource_name = "Material.002"
@@ -1518,6 +1521,8 @@ size = Vector3(1, 2, 0.4)
 
 [node name="Minotaur" type="CharacterBody3D" unique_id=1005086158 node_paths=PackedStringArray("state_machine", "hurt_state", "dead_state")]
 script = ExtResource("1_a64q4")
+health = 30.0
+damage = 12.0
 state_machine = NodePath("MinotaurStateMachine")
 hurt_state = NodePath("MinotaurStateMachine/HurtState")
 dead_state = NodePath("MinotaurStateMachine/DeadState")
@@ -2026,10 +2031,10 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_bqw8k")
 
 [node name="Physical Bone shoulder_L" type="PhysicalBone3D" parent="minotaur/metarig/Skeleton3D/PhysicalBoneSimulator3D" unique_id=711867390]
-transform = Transform3D(0.06485473, 0.53915936, -0.7313881, -0.39780626, -0.64239377, -0.5088301, -0.8169282, 0.35561913, 0.18971288, 0.06245418, 1.4808156, 0.3263132)
+transform = Transform3D(0.06485473, 0.53915936, -0.7313881, -0.39780626, -0.64239377, -0.50883, -0.8169282, 0.35561913, 0.18971287, 0.06245418, 1.4808156, 0.3263132)
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1199306e-08, -4.3021373e-08, 0.13638176)
-body_offset = Transform3D(-0.011643261, 0.8939773, 0.17463246, -1.6391277e-07, 0.17464666, -0.89405024, -0.91087455, -0.011427462, -0.0022322088, -0.023816645, 0.121932164, 0.00030446053)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.34403e-08, -4.3021373e-08, 0.13638176)
+body_offset = Transform3D(-0.011643261, 0.8939773, 0.17463246, -1.6391277e-07, 0.17464666, -0.89405024, -0.91087455, -0.011427462, -0.002232194, -0.023816645, 0.121932164, 0.00030446053)
 bone_name = "shoulder.L"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -2138,10 +2143,10 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_2cs1q")
 
 [node name="Physical Bone palm_03_L" type="PhysicalBone3D" parent="minotaur/metarig/Skeleton3D/PhysicalBoneSimulator3D" unique_id=288450157]
-transform = Transform3D(0.13169381, -0.84300363, -0.3191069, 0.682157, -0.117589995, 0.59216714, -0.5891911, -0.32456905, 0.61427706, 0.5078854, 1.0586932, -0.28831843)
+transform = Transform3D(0.13169381, -0.84300363, -0.3191069, 0.682157, -0.117589995, 0.5921672, -0.5891911, -0.32456905, 0.61427706, 0.5078854, 1.0586932, -0.28831843)
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4572364e-07, -1.64425e-06, 0.04270974)
-body_offset = Transform3D(0.9089627, 0.059813708, 0.006046891, 0, 0.09162843, -0.9063293, -0.0601186, 0.90435314, 0.09142858, -0.00025838614, 0.03870924, -0.003903389)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4450128e-07, -1.6475096e-06, 0.04270974)
+body_offset = Transform3D(0.9089627, 0.059813708, 0.006046921, 0, 0.09162843, -0.9063292, -0.0601186, 0.90435314, 0.09142864, -0.00025838614, 0.03870924, -0.003903389)
 bone_name = "palm.03.L"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -2236,10 +2241,10 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_y6x5i")
 
 [node name="Physical Bone thumb_01_R" type="PhysicalBone3D" parent="minotaur/metarig/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1823265245]
-transform = Transform3D(0.64266276, 0.41861057, -0.4915052, 0.6452083, -0.39198142, 0.5097886, 0.022769624, -0.70777345, -0.5730321, -0.5984026, 1.1559403, -0.25426182)
+transform = Transform3D(0.64266276, 0.4186106, -0.4915052, 0.6452083, -0.39198142, 0.5097886, 0.022769624, -0.7077735, -0.5730321, -0.5984026, 1.1559403, -0.25426182)
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24513e-08, -1.5957486e-08, 0.022912694)
-body_offset = Transform3D(0.9109491, -4.824251e-07, 9.1362745e-07, 8.130446e-07, -2.2351742e-06, -0.910949, 1.3969839e-07, 0.9109489, -1.9669533e-06, -5.9604645e-08, 0.020872295, 5.9604645e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2451294e-08, -1.5957486e-08, 0.022912692)
+body_offset = Transform3D(0.9109491, -5.401671e-07, 9.1362745e-07, 8.130446e-07, -2.2351742e-06, -0.910949, 1.3969839e-07, 0.9109488, -1.9669533e-06, -5.9604645e-08, 0.020872295, 5.9604645e-08)
 bone_name = "thumb.01.R"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -2250,10 +2255,10 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_82d03")
 
 [node name="Physical Bone thumb_02_R" type="PhysicalBone3D" parent="minotaur/metarig/Skeleton3D/PhysicalBoneSimulator3D" unique_id=1029193505]
-transform = Transform3D(0.841444, 0.18245097, -0.29750827, 0.34881902, -0.4148138, 0.7321765, 0.011170519, -0.7902333, -0.4530277, -0.58167946, 1.1308184, -0.23281536)
+transform = Transform3D(0.8414441, 0.18245097, -0.2975082, 0.34881902, -0.4148138, 0.7321764, 0.011170535, -0.7902333, -0.45302767, -0.58167946, 1.1308184, -0.23281536)
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8657325e-07, 5.4762204e-08, 0.01835808)
-body_offset = Transform3D(0.91094935, -8.167699e-07, -2.8563663e-06, -2.9243529e-06, 1.2218952e-06, -0.91094905, 4.4051558e-07, 0.9109492, 1.3411045e-06, -2.0861626e-07, 0.016723275, -7.4505806e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85982e-07, 5.4762207e-08, 0.018358078)
+body_offset = Transform3D(0.9109494, -8.3167106e-07, -2.8270297e-06, -2.9099174e-06, 1.2218952e-06, -0.9109491, 4.293397e-07, 0.9109492, 1.3411045e-06, -2.0861626e-07, 0.016723275, -7.4505806e-08)
 bone_name = "thumb.02.R"
 joint_constraints/bias = 0.3
 joint_constraints/damping = 1.0
@@ -2409,10 +2414,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15915722)
 shape = SubResource("BoxShape3D_ecd4o")
 
-[node name="MinotaurStateMachine" type="Node" parent="." unique_id=38087431 node_paths=PackedStringArray("dead_state", "anim_player", "start_state")]
+[node name="MinotaurStateMachine" type="Node" parent="." unique_id=38087431 node_paths=PackedStringArray("dead_state", "anim_player", "audio_player", "start_state")]
 script = ExtResource("2_a64q4")
 dead_state = NodePath("DeadState")
 anim_player = NodePath("../minotaur/AnimationPlayer")
+audio_player = NodePath("../AudioStreamPlayer")
 start_state = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="MinotaurStateMachine" unique_id=1568444225 node_paths=PackedStringArray("exit_state")]
@@ -2425,6 +2431,7 @@ script = ExtResource("4_bqw8k")
 cooldown_timer = NodePath("ChargeCooldown")
 anim_text = "CHARGE"
 exit_state = NodePath("../MoveState")
+charge_noise = ExtResource("5_daqjv")
 
 [node name="ChargeCooldown" type="Timer" parent="MinotaurStateMachine/ChargeState" unique_id=1690398142]
 wait_time = 1.4
@@ -2437,6 +2444,7 @@ attack_state = NodePath("../ChargeState")
 ready_state = NodePath("../IdleState")
 anim_text = "walk"
 attack_distance = 5.0
+move_noise = ExtResource("6_a64q4")
 
 [node name="HurtState" type="Node" parent="MinotaurStateMachine" unique_id=1070560660 node_paths=PackedStringArray("exit_state")]
 script = ExtResource("7_tg7x6")
@@ -2447,10 +2455,15 @@ script = ExtResource("7_o0hr1")
 skeleton = NodePath("../../minotaur/metarig/Skeleton3D/PhysicalBoneSimulator3D")
 collision_box = NodePath("../../CollisionShape3D")
 timer = NodePath("Timer")
+death_noise = ExtResource("10_buaqi")
 
 [node name="Timer" type="Timer" parent="MinotaurStateMachine/DeadState" unique_id=1229050803]
 wait_time = 5.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1776872845]
+volume_db = -10.0
+max_polyphony = 2
 
 [connection signal="body_entered" from="ScanArea" to="MinotaurStateMachine" method="_on_scan_area_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

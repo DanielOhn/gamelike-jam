@@ -1659,9 +1659,20 @@ _data = {
 &"SkullRig|Reload": SubResource("Animation_bf1cd")
 }
 
-[sub_resource type="SphereMesh" id="SphereMesh_kyr06"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s0012"]
+transparency = 1
+albedo_color = Color(0.07058824, 0.21960784, 0.30588236, 0.84313726)
+emission_enabled = true
+emission = Color(0.0721739, 0.2215186, 0.30405322, 1)
+emission_energy_multiplier = 10.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_kyr06"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_uk3ok"]
+material = SubResource("StandardMaterial3D_s0012")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.1
+radial_segments = 12
+rings = 6
 
 [node name="SkullWeapon" type="Node3D" unique_id=1667093355]
 
@@ -1840,23 +1851,13 @@ skeleton = NodePath("..")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="skull-weapon" unique_id=2015064235]
 libraries/ = SubResource("AnimationLibrary_2el65")
 
-[node name="Laser" type="Node3D" parent="skull-weapon" unique_id=1473571068]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-visible = false
-
-[node name="Scalar" type="Node3D" parent="skull-weapon/Laser" unique_id=366372749]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skull-weapon/Laser/Scalar" unique_id=632063077]
-mesh = SubResource("SphereMesh_kyr06")
-
-[node name="Checker" type="Node3D" parent="skull-weapon" unique_id=1522941902]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="skull-weapon/Checker" unique_id=603639344]
-mesh = SubResource("BoxMesh_kyr06")
-
 [node name="SkullStateMachine" type="Node" parent="." unique_id=1874372962 node_paths=PackedStringArray("anim_player", "start_state", "fire_state", "disable_state")]
 script = ExtResource("1_taeix")
+beam_damage = 3.0
+current_ammo = 30
+max_clip = 30
+total_ammo = 150
+ammo_capacity = 150
 anim_player = NodePath("../skull-weapon/AnimationPlayer")
 start_state = NodePath("ReadyState")
 fire_state = NodePath("BeamAttackState")
@@ -1870,7 +1871,7 @@ anim_text = "Idle"
 [node name="BeamAttackState" type="Node" parent="SkullStateMachine" unique_id=1194195892 node_paths=PackedStringArray("beam_cooldown", "laser_beam")]
 script = ExtResource("3_cfr01")
 beam_cooldown = NodePath("BeamTimer")
-laser_beam = NodePath("../../skull-weapon/Laser")
+laser_beam = NodePath("../../LaserCast")
 
 [node name="BeamTimer" type="Timer" parent="SkullStateMachine/BeamAttackState" unique_id=1729548642]
 one_shot = true
@@ -1882,3 +1883,11 @@ script = ExtResource("4_kyr06")
 script = ExtResource("5_s0012")
 ready_state = NodePath("../ReadyState")
 reload_anim = "Reload"
+
+[node name="LaserCast" type="RayCast3D" parent="." unique_id=1038870060]
+transform = Transform3D(0.98587656, -0.1674155, 0.0044336403, -9.942204e-10, -0.026473567, -0.99964947, 0.1674743, 0.98553085, -0.026099676, -0.43882728, 0.3386926, -0.2090944)
+visible = false
+target_position = Vector3(0, -10, 0)
+
+[node name="LaserMesh" type="MeshInstance3D" parent="LaserCast" unique_id=632063077]
+mesh = SubResource("CylinderMesh_uk3ok")

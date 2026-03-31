@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dido3n6ofv2wa" path="res://objects/enemy/states/gargoyle_state_machine.gd" id="8_p2d2u"]
 [ext_resource type="Script" uid="uid://hrnphmqgh7lt" path="res://objects/enemy/states/gargoyle_idle.gd" id="9_1341u"]
 [ext_resource type="Script" uid="uid://bvhtj753mjbbo" path="res://objects/enemy/states/dead_state.gd" id="9_aglqg"]
+[ext_resource type="AudioStream" uid="uid://ietjba08v3ti" path="res://sounds/sfx/monsters/GDC - Gargoyle - Turn noise.wav" id="9_j4nwa"]
+[ext_resource type="AudioStream" uid="uid://dokmno1hchnb5" path="res://sounds/sfx/monsters/Zapsplat - Gargoyle - Fireball.mp3" id="10_p1qkx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1341u"]
 size = Vector3(1.2, 1.7, 1.5)
@@ -511,8 +513,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.36505842)
 shape = SubResource("BoxShape3D_p2d2u")
 
-[node name="GargoyleStateMachine" type="Node" parent="." unique_id=287983113 node_paths=PackedStringArray("start_state")]
+[node name="GargoyleStateMachine" type="Node" parent="." unique_id=287983113 node_paths=PackedStringArray("audio_player", "start_state")]
 script = ExtResource("8_p2d2u")
+audio_player = NodePath("../AudioStreamPlayer")
 start_state = NodePath("GargoyleIdle")
 
 [node name="GargoyleIdle" type="Node" parent="GargoyleStateMachine" unique_id=272774111 node_paths=PackedStringArray("exit_state")]
@@ -527,6 +530,8 @@ exit_state = NodePath("../GargoyleIdle")
 script = ExtResource("6_motg6")
 fireball = ExtResource("7_lf60k")
 fireball_cooldown = NodePath("FireCooldown")
+turn_noise = ExtResource("9_j4nwa")
+shoot_noise = ExtResource("10_p1qkx")
 
 [node name="FireCooldown" type="Timer" parent="GargoyleStateMachine/GargoyleFire" unique_id=842904614]
 
@@ -536,6 +541,10 @@ collision_box = NodePath("../../CollisionShape3D")
 timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="GargoyleStateMachine/DeadState" unique_id=1839129511]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=444980843]
+volume_db = -10.0
+max_polyphony = 2
 
 [connection signal="body_entered" from="ScanArea" to="GargoyleStateMachine" method="_on_scan_area_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

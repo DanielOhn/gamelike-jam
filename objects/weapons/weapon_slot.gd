@@ -7,15 +7,16 @@ class_name WeaponSlot
 const SKULL_WEAPON = preload("uid://c8koklfjny4mn")
 const BOMB_WEAPON = preload("uid://dvp8llu0nldmj")
 
-@onready var weapon_update = $"../PlayerUI/VBoxContainer/HBoxContainer3/WeaponUpdate"
-@onready var ammo_update = $"../PlayerUI/VBoxContainer/HBoxContainer2/AmmoUpdate"
+@onready var ammo_update = $"../UI/Ammo"
+@onready var total_ammo_update = $"../UI/TotalAmmo"
 
 var weapon_index: int = 0
 var current_weapon: Node3D
 
+@export var view_weapon: ViewWeapon
+
 func _ready():
 	current_weapon = weapons[0]
-	print("Current Weapon: ", current_weapon)
 
 func add_weapon(weapon):
 	weapons.append(weapon)
@@ -28,6 +29,7 @@ func swap_weapon(dir: int):
 	
 	current_weapon.get_child(1).anim_player.stop()
 	
+	
 	if weapon_index + dir > weapons.size() - 1:
 		weapon_index = 0
 	elif weapon_index + dir < 0:
@@ -35,15 +37,14 @@ func swap_weapon(dir: int):
 	else:
 		weapon_index += dir
 	
-	print("Swapping Weapon" , current_weapon, weapons[weapon_index])
 	for weap in weapons:
 		weap.get_child(1).disable()
 	#current_weapon.get_child(1).disable()
 	current_weapon = weapons[weapon_index]
 	current_weapon.get_child(1).enable()
 	
-	weapon_update.text = current_weapon.name
-	ammo_update.text = str(current_weapon.get_child(1).current_ammo)
+	view_weapon.update_visibility()
+	ammo_update.text = str(current_weapon.get_child(1).current_ammo) + " | " + str(current_weapon.get_child(1).total_ammo)
 	
 
 func create_weapon(weapon: String):
@@ -71,3 +72,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("swap_down"):
 			swap_weapon(-1)
 	ammo_update.text = str(current_weapon.get_child(1).current_ammo)
+	if current_weapon.name == "Wand":
+		total_ammo_update.text = ""
+	else:
+		total_ammo_update.text = str(current_weapon.get_child(1).total_ammo)

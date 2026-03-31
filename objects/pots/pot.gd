@@ -1,14 +1,18 @@
 extends RigidBody3D
 class_name Pot
 
+var starting_pos: Vector3
+const POT_SLIDING = preload("uid://b5ns66tyeb0i6")
+@onready var audio_player = $AudioStreamPlayer
+
+func play_audio():
+	audio_player.stream = POT_SLIDING
+	audio_player.play()
+
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 3
-
-func _physics_process(delta):
-	for body in get_colliding_bodies():
-		print(get_colliding_bodies())
-		print(body.get_parent())
-		if body.get_parent().is_in_group("Wall"):
-			apply_central_impulse(-body.get_normal() * 2)
+	starting_pos = position
 	
+func reset():
+	position = starting_pos

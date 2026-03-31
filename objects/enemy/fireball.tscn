@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://b4rbrkrgwfrx4"]
 
 [ext_resource type="Script" uid="uid://b2qdhhlfn1tvk" path="res://objects/enemy/fireball.gd" id="1_sg3xv"]
+[ext_resource type="PackedScene" uid="uid://cvunqfebvge3a" path="res://blender/fireball.blend" id="2_m4eie"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_m4eie"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_mo3pe"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mo3pe"]
+height = 1.2
 
 [node name="Fireball" type="Area3D" unique_id=1181032566]
 script = ExtResource("1_sg3xv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=648904186]
-mesh = SubResource("SphereMesh_m4eie")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1343993945]
-shape = SubResource("SphereShape3D_mo3pe")
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.1343039)
+shape = SubResource("CapsuleShape3D_mo3pe")
+
+[node name="fireball" parent="." unique_id=1521031972 instance=ExtResource("2_m4eie")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

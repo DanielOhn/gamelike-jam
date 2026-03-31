@@ -1,6 +1,8 @@
 extends State
 class_name PlayState
 
+@export var walk_sound: Resource
+
 # Called when the node enters the scene tree for the first time.
 func enter():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,6 +29,10 @@ func physics_update(_delta: float) -> void:
 	if direction:
 		state_machine.player.velocity.x = direction.x * state_machine.player.SPEED
 		state_machine.player.velocity.z = direction.z * state_machine.player.SPEED
+		
+		if !state_machine.sound_player.playing and state_machine.player.is_on_floor():
+			state_machine.sound_player.stream = walk_sound
+			state_machine.sound_player.play()
 	else:
 		state_machine.player.velocity.x = move_toward(state_machine.player.velocity.x, 0, state_machine.player.SPEED)
 		state_machine.player.velocity.z = move_toward(state_machine.player.velocity.z, 0, state_machine.player.SPEED)

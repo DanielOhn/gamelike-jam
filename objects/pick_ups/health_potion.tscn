@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1o1wjcyhtrgq" path="res://objects/pick_ups/health_potion.gd" id="1_3djgo"]
 [ext_resource type="Texture2D" uid="uid://socomp5tlnwx" path="res://blender/Material.002 Base Color.png" id="2_2wxde"]
+[ext_resource type="AudioStream" uid="uid://d1bq6f2lsoibn" path="res://sounds/sfx/player incl weapons n potions/GDC - Potion drink.wav" id="3_2wxde"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6sx82"]
 
@@ -159,5 +160,8 @@ metadata/extras = {
 [node name="Timer" type="Timer" parent="." unique_id=1360151250]
 wait_time = 1.5
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=747684816]
+stream = ExtResource("3_2wxde")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -17,7 +17,6 @@ func exit():
 		
 func idle_animation():
 	if state_machine.anim_player != null:
-		print(state_machine.anim_player)
 		state_machine.anim_player.play(animation)
 
 	

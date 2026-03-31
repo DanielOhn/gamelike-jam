@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dpjyalgc5hqqq" path="res://objects/pots/blue_pressure_plate.tscn" id="14_gv2x6"]
 [ext_resource type="PackedScene" uid="uid://dnce0pr27t1sq" path="res://objects/pots/gate.tscn" id="14_ud8sp"]
 [ext_resource type="PackedScene" uid="uid://d1q3yk2fbgnfx" path="res://objects/level/wall.tscn" id="19_ow684"]
+[ext_resource type="PackedScene" uid="uid://bv25bexmmn4v4" path="res://objects/pick_ups/ammo_bag.tscn" id="21_puves"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0yvp"]
 resource_name = "Material"
@@ -594,7 +595,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011669159, 0.09048605, 0.1
 shape = SubResource("ConcavePolygonShape3D_5vwqk")
 
 [node name="Player" parent="." unique_id=1089648825 instance=ExtResource("1_ln2x5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -68.84233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.660141, 1, -62.647808)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1918869047]
 environment = SubResource("Environment_ln2x5")
@@ -625,3 +626,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.234734, 1, 11.928)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 0, -74)
 
 [node name="Node3D" type="Node3D" parent="." unique_id=316023031]
+
+[node name="AmmoBag" parent="." unique_id=1339466715 instance=ExtResource("21_puves")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.261481, 1.090486, -60.751904)

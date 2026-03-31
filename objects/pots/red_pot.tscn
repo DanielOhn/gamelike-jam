@@ -13,3 +13,5 @@ script = ExtResource("1_km0sm")
 shape = SubResource("BoxShape3D_5cauf")
 
 [node name="redpot" parent="." unique_id=865684510 instance=ExtResource("2_x5xr5")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=12732999]

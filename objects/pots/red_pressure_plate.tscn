@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://btqnarojdkyws" path="res://objects/pots/pressure_plate.gd" id="1_6votf"]
 [ext_resource type="PackedScene" uid="uid://dm00ek2p0ehtg" path="res://blender/redpressure plate.blend" id="2_84r8q"]
+[ext_resource type="AudioStream" uid="uid://dmmvvc56rct8r" path="res://sounds/sfx/other/GDC - Door open maybe.wav" id="3_84r8q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx7d8"]
 size = Vector3(1.8, 0.2, 1.8)
@@ -13,6 +14,9 @@ script = ExtResource("1_6votf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=433195980]
 shape = SubResource("BoxShape3D_wx7d8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=842434730]
+stream = ExtResource("3_84r8q")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

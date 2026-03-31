@@ -8,7 +8,7 @@ class_name ChargeState
 @export var exit_state: State
 
 var charging: bool = false
-
+@export var charge_noise: Resource
 
 func _ready():
 	cooldown_timer.wait_time = charge_time
@@ -26,6 +26,9 @@ func enter() -> void:
 		charging = true
 		state_machine.enemy.hitbox.monitoring = true
 		cooldown_timer.start()
+		
+		state_machine.audio_player.stream = charge_noise
+		state_machine.audio_player.play()
 	else:
 		state_machine.switch_state(exit_state)
 

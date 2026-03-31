@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bhq7hi0ldm4o4"]
+
+[ext_resource type="PackedScene" uid="uid://dh62a2x4lu1kf" path="res://blender/weapons/skull.fbx" id="1_83fcb"]
+[ext_resource type="Script" uid="uid://dnq6x4ai8i7rc" path="res://scripts/rotate.gd" id="2_0ncqc"]
+[ext_resource type="PackedScene" uid="uid://cxi7cvj2sppbq" path="res://blender/weapons/bomb.fbx" id="3_0ncqc"]
+[ext_resource type="PackedScene" uid="uid://vhku3fjxf1kj" path="res://blender/weapons/Wand.fbx" id="4_b7cfd"]
+
+[sub_resource type="Environment" id="Environment_83fcb"]
+
+[node name="ViewWeapon" type="Node3D" unique_id=980215039]
+
+[node name="Weapons" type="Node3D" parent="." unique_id=690630918]
+script = ExtResource("2_0ncqc")
+
+[node name="Skull" parent="Weapons" unique_id=726859493 instance=ExtResource("1_83fcb")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+visible = false
+
+[node name="Bomb" parent="Weapons" unique_id=1913251837 instance=ExtResource("3_0ncqc")]
+visible = false
+
+[node name="Wand" parent="Weapons" unique_id=708467694 instance=ExtResource("4_b7cfd")]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, -0.2733295, -0.8127849, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=742848676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6611831, 5.8274393)
+fov = 45.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=741246623]
+environment = SubResource("Environment_83fcb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1093881217]

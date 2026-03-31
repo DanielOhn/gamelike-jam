@@ -1311,7 +1311,8 @@ libraries/ = SubResource("AnimationLibrary_uqte7")
 [node name="BombStateMachine" type="Node" parent="." unique_id=1865350696 node_paths=PackedStringArray("anim_player", "start_state", "fire_state", "disable_state")]
 script = ExtResource("2_1alvv")
 current_ammo = 1
-max_ammo = 1
+max_clip = 1
+total_ammo = 6
 ammo_capacity = 6
 anim_player = NodePath("../bomb-weapon/AnimationPlayer")
 start_state = NodePath("ReadyState")

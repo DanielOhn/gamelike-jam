@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://byhqj68f72d2j" path="res://blender/greenpressureplate.blend" id="1_isgov"]
 [ext_resource type="Script" uid="uid://btqnarojdkyws" path="res://objects/pots/pressure_plate.gd" id="1_wx7d8"]
+[ext_resource type="AudioStream" uid="uid://dmmvvc56rct8r" path="res://sounds/sfx/other/GDC - Door open maybe.wav" id="3_ixsx7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wx7d8"]
 size = Vector3(1.8, 0.2, 1.8)
@@ -13,6 +14,9 @@ script = ExtResource("1_wx7d8")
 shape = SubResource("BoxShape3D_wx7d8")
 
 [node name="greenpressureplate" parent="." unique_id=1061768209 instance=ExtResource("1_isgov")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=634878836]
+stream = ExtResource("3_ixsx7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

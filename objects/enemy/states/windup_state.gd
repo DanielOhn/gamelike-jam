@@ -5,9 +5,11 @@ class_name WindupState
 @export var fly_speed: float = 3
 @export var exit_state: State
 @export var anim_name: String
+@export var flap_noise: Resource
 
 func enter():
 	state_machine.anim_player.play(anim_name)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func physics_update(_delta: float) -> void:

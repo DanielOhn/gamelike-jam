@@ -13,3 +13,5 @@ script = ExtResource("1_uvpdb")
 shape = SubResource("BoxShape3D_4s706")
 
 [node name="greenpot" parent="." unique_id=237685173 instance=ExtResource("2_uw8i6")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2116931782]

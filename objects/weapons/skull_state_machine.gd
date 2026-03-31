@@ -2,7 +2,9 @@ extends WeaponStateMachine
 class_name SkullStateMachine
 
 @export var beam_damage: float = 2.5
-@export var fire_rate: float = .25
+@export var fire_rate: float = .25	
+
+
 
 func _input(event):
 	if !disabled:

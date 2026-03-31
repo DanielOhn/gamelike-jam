@@ -5,9 +5,11 @@ extends Area3D
 func seek_target(target: Enemy):
 	var move_tween: Tween = create_tween()
 	move_tween.tween_property(self, "position", target.position, .2)
+	look_at(target.position)
 	await move_tween.finished
 	
 func move(pos):
+	
 	var move_tween: Tween = create_tween()
 	move_tween.tween_property(self, "position", pos, 2.5)
 	await move_tween.finished

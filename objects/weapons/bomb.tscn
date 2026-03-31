@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bwe0bl1s6xi4j"]
+[gd_scene format=4 uid="uid://bwe0bl1s6xi4j"]
 
 [ext_resource type="Script" uid="uid://ci86dgvravsav" path="res://objects/weapons/bomb.gd" id="1_c13kl"]
 [ext_resource type="PackedScene" uid="uid://cxi7cvj2sppbq" path="res://blender/weapons/bomb.fbx" id="2_gkcqu"]
@@ -6,8 +6,65 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_dg7wh"]
 size = Vector3(0.75, 0.75, 0.75)
 
-[node name="Bomb" type="Area3D" unique_id=127802866]
+[sub_resource type="SphereShape3D" id="SphereShape3D_c13kl"]
+radius = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a8jtw"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0.70252055, 0.15898673, 0.14200106, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ptdbm"]
+resource_name = "explosion_Icosphere"
+_surfaces = [{
+"aabb": AABB(-0.95105785, -0.99999994, -0.99999994, 1.9021157, 2, 1.9999999),
+"attribute_data": PackedByteArray("wy46PlZhLz8Bo4s++REHP6Euuj5WYS8/wy46PgAAgD8GL7o9+REHPwGjiz6jsFc/QbroPqOwVz+hLro+AACAP0G66D75EQc/kC46PwAAgD+QLjo/VmEvPzC6aD8AAIA/YHRRP/kRBz/A6CI/o7BXP2B0UT+jsFc/AACAP6OwVz8wumg/VmEvP/CiCz9WYS8/wOgiP/kRBz/wogs/AACAPwYvuj2jsFc/AAAAAFZhLz9IF10//IhDP3jRRT/8iEM/qIsuP/yIQz/YRRc//IhDPwgAAD/8iEM/cXTRPvyIQz8Bo4s+VmEvP2K6aD78iEM/I6MLPvyIQz/DLro9VmEvPyOjCz5R2Gs/YrpoPlHYaz/CLjo+o7BXPwYvOj38iEM/Bi86Pag5Gz8jows+qDkbP2K6aD6oORs/0eiiPqg5Gz/R6KI+/IhDP6Euuj6jsFc/0eiiPlHYaz9xdNE+UdhrP0C66D5WYS8/cXTRPqg5Gz8IAAA/qDkbP/CiCz+jsFc/CAAAP1HYaz/YRRc/UdhrP8DoIj9WYS8/2EUXP6g5Gz+oiy4/qDkbP5AuOj+jsFc/qIsuP1HYaz940UU/UdhrP2B0UT9WYS8/eNFFP6g5Gz9IF10/qDkbPxhddD/8iEM/MLpoP6OwVz9IF10/UdhrPxhddD9R2Gs/"),
+"bone_aabbs": [AABB(-0.95105785, -0.99999994, -0.99999994, 1.9021157, 2, 1.9999999)],
+"format": 34359745559,
+"index_count": 240,
+"index_data": PackedByteArray("AwAgACEAIAAiACEAIAAUACIAIQAiAAUAFAAeACIAFAAjAB4AIgAdAAUAHgAdACIAIwAfAB4AIwAVAB8AFQAkAB8AJAAlAB8AJAAEACUAHwAlAAAAHgAfAAAAHgAAAB0AHQAAABwAAAAmABwAJgAnABwAJgABACcAHAAnAAIAHQAcACgAKAAcAAIABQAdACgABQAoACkABQApACoAKQArACoAKgArAAcAKQAGACsAKAAbACkAKQAbAAYAKAACABsAGwACACwAAgAtACwALQAuACwALQAIAC4ALAAuABEAGwAsABoAGgAsABEABgAbABoABgAaAC8AMAAGAC8AMAAvADEAEwAwADEAMQAvAA0AGgAZAC8ALwAZAA0AGgARABkAGQARADIAEQAzADIAMwA0ADIAMwASADQAMgA0AAoAGQAyABgAGAAyAAoADQAZABgADQAYADUANgANADUANgA1ADcACQA2ADcANwA1AA4AGAAXADUANQAXAA4AGAAKABcAFwAKADgACgA5ADgAOQA6ADgAOQAMADoAOAA6ABAAFwA4ABYAFgA4ABAADgAXABYAFgAQADsADgAWADwAFgA7ADwAPAA7AA8APQAOADwAPgA8AA8APQA8AD4ACwA9AD4A"),
+"lods": [0.2921279, PackedByteArray("CQANAA4ACwAOAA8AFgAPAA4AFgAQAA8ADgAXABYADQAXAA4AFgAKABAAFwAKABYADAAQAAoAGAAXAA0AGAAKABcAGAARAAoAEQASAAoADQAZABgAGQARABgABgAZAA0AEwAGAA0AGgARABkAGgAZAAYAGgACABEAAgAIABEABgAbABoAGwACABoABQAbAAYABQACABsABQAGAAcABQAcAAIAAAACABwAAAABAAIAHQAcAAUAHQAAABwAFAAdAAUAAwAUAAUAHgAAAB0AHgAdABQAFAAfAB4AHgAfAAAAFAAVAB8AFQAAAB8AFQAEAAAA"), 0.43819186, PackedByteArray("CQANAA4ACwAOAA8AEAAPAA4ADgAKABAACgAOAA0ADAAQAAoADQARAAoAEQASAAoAEQANAAYAEwAGAA0ABgACABEAAgAIABEABQACAAYABQAGAAcABQAAAAIAAAABAAIAAAAFABQAAwAUAAUAFAAVAAAAFQAEAAAA"), 1.4044216, PackedByteArray("AAABAAIAAwAEAAAAAAAFAAMABQAAAAIABQACAAYABQAGAAcABgACAAgACAAJAAYACQAIAAoACwAKAAwA")],
+"material": SubResource("StandardMaterial3D_a8jtw"),
+"name": "Material.001",
+"primitive": 3,
+"skin_data": PackedByteArray("AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAA"),
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 63,
+"vertex_data": PackedByteArray("u4KNPgL65D4mxFk/AAAAAAAAgD8AAACAHvlkP3T55D4AAACAAAAAAP//f78AAACAAAAAAAAAgD8AAACAVD45P/P55L7vlQY/VD45P/P55L7vlQa/AAAAAP//f78AAACAAAAAAAAAgD8AAACAAAAAAP//f78AAACAVD45v/f55D7vlQa/AAAAAP//f78AAACAAAAAAAAAgD8AAACAu4KNvv755L4mxFm/Hvlkv3D55L4AAACAu4KNvv755L4mxFk/VD45v/f55D7vlQY/u4KNPgL65D4mxFm/AAAAAAAAgD8AAACAAAAAAP//f78AAACAu4KNvv755L4mxFk/VD45v/f55D7vlQY/h3hzvwAAgDPnNp4+h3hzvwAAgDPnNp6+HnkWvwAAgDO4G0+/AAAAAAAAgDP//3+/HnkWPwAAgDO4G0+/h3hzPwAAgDPnNp6+Li0wP6eWBj+Z//8+HnkWPwAAgDO4G08/AAAAAAAAgDP//38/vpaGvr+WBj9jG08/wFomvnzEWb9h//8+5cPZPnjEWb++Np4+vpaGPr2WBr9jG08/HnkWvwAAgDO4G08/5cPZvnrEWT++Np4+wFomPn3EWT9h//8+wFomPn3EWT9h//8+OpYGP1DEWT8AAACAh3hzPwAAgDPnNp4+D8RZP6CWBr8AAACA5cPZPnjEWb++Np4+5cPZPnjEWb++Np6+Li0wP6eWBj+Z//++OpYGP1DEWT8AAACAwFomPn3EWT9h//++vpaGPr2WBr9jG0+/5cPZPnjEWb++Np6+wFomvnzEWb9h//++vpaGvr+WBj9jG0+/wFomPn3EWT9h//++5cPZvnrEWT++Np6+Li0wv6WWBr+Z//++wFomvnzEWb9h//++OpYGv07EWb8AAACAD8RZv6KWBj8AAACA5cPZvnrEWT++Np6+5cPZvnrEWT++Np4+HnkWvwAAgDO4G08/Li0wv6WWBr+Z//8+OpYGv07EWb8AAACAwFomvnzEWb9h//8+eJZcpP//sM//f/////8Q5VTVqqr//////38AAP//sM//f///m+D/v5e2QV7//xDlQd6YNgAAEOX/fwAA//////9///8AABDl/38AACJK/7+9IWbJIkr/v/9/AADctf+//3////9//79cJHkWYx//v6oqVFX/f/+/hmmiW4zGT8tnSb2hvKk2uKLbhekAALDP/3///2Mf/7//fwAAAACwz4ZpoltU2jm3Z0m9oX+00MpjH/9/Q56zvQAAYp+7YUrCAAAhykQ4673/////ugXcwv//IconBNyj//9in5YE3PBks0Kn//8Q5dy1/3/X+yHc/3//f0T6Ir3vah2qm+D/v0ByCjiP5+qtV6JMOyjrYd0PleFV//+wzyJK/3+6xxLCp12yxDrFasq+jfTH1NvHs76N9Mfb6zjk4rAbz9HqIZGb4P9/aPshjxrPG0//////V6JMO2noT4hMu1gilRev97zYmcwAABDl4rAbzy0V3e4JuEDyIxTFm+DVEBUAALDPTLtYItYUnKL1R74NbxgU0h4q7upjH/+/CbhA8iokNsyyRKbdxDqUtUInZTMiSv+/9Ue+DXNI7bUcT+Mwu12WyuQw47D/f/+/skSm3V9vycunXbLEn5A0tCJK/3+6xxLCmky8WNy1/78cT+MwQ6JotUByCjiLtxHK")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="Skin" id="Skin_o8bso"]
+resource_name = "Skin"
+bind_count = 1
+bind/0/name = &"Bone"
+bind/0/bone = -1
+bind/0/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.56740826, 0)
+
+[sub_resource type="Animation" id="Animation_pnc57"]
+resource_name = "Explosion"
+length = 0.5
+tracks/0/type = "scale_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("ExplosionRig/Skeleton3D:Bone")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.033333335, 1, 1, 1, 1, 0.06666667, 1, 1.0349362, 1.0349362, 1.0349362, 0.1, 1, 1.1220887, 1.1220887, 1.1220887, 0.13333334, 1, 1.2655898, 1.2655898, 1.2655898, 0.16666667, 1, 1.4564236, 1.4564236, 1.4564236, 0.2, 1, 1.6923366, 1.6923366, 1.6923366, 0.23333333, 1, 1.9485351, 1.9485351, 1.9485351, 0.3, 1, 2.4857252, 2.4857252, 2.4857252, 0.33333334, 1, 2.7486854, 2.7486854, 2.7486854, 0.36666667, 1, 2.9845982, 2.9845982, 2.9845982, 0.4, 1, 3.1867018, 3.1867018, 3.1867018, 0.43333334, 1, 3.3459806, 3.3459806, 3.3459806, 0.46666667, 1, 3.4534185, 3.4534185, 3.4534185, 0.5, 1, 3.5, 3.5, 3.5)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d6o26"]
+_data = {
+&"Explosion": SubResource("Animation_pnc57")
+}
+
+[node name="Bomb" type="Area3D" unique_id=127802866 node_paths=PackedStringArray("explosion", "bomb_mesh", "bomb_collision", "anim_player", "explosion_hitbox")]
 script = ExtResource("1_c13kl")
+explosion = NodePath("Explosion")
+bomb_mesh = NodePath("bomb")
+bomb_collision = NodePath("CollisionShape3D")
+anim_player = NodePath("Explosion/explosion/AnimationPlayer")
+explosion_hitbox = NodePath("Explosion/ExplosionHitbox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2119523896]
 shape = SubResource("BoxShape3D_dg7wh")
@@ -16,8 +73,36 @@ shape = SubResource("BoxShape3D_dg7wh")
 transform = Transform3D(0.3, 0, 0, 0, 0.1928363, 0.22981334, 0, -0.22981334, 0.1928363, 0, 0, 0)
 
 [node name="UpwardTimer" type="Timer" parent="." unique_id=1022021392]
-wait_time = 0.3
+wait_time = 0.35
 one_shot = true
 autostart = true
 
+[node name="Explosion" type="Area3D" parent="." unique_id=1735357784]
+
+[node name="ExplosionHitbox" type="CollisionShape3D" parent="Explosion" unique_id=1065683571]
+shape = SubResource("SphereShape3D_c13kl")
+
+[node name="explosion" type="Node3D" parent="Explosion" unique_id=20644826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46447992, 0)
+
+[node name="ExplosionRig" type="Node3D" parent="Explosion/explosion" unique_id=736753990]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="Explosion/explosion/ExplosionRig" unique_id=1809826918]
+bones/0/name = "Bone"
+bones/0/parent = -1
+bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.56740826, 0)
+bones/0/enabled = true
+bones/0/position = Vector3(0, -0.56740826, 0)
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/0/scale = Vector3(1, 1, 1)
+
+[node name="Explosion" type="MeshInstance3D" parent="Explosion/explosion/ExplosionRig/Skeleton3D" unique_id=1575225292]
+mesh = SubResource("ArrayMesh_ptdbm")
+skin = SubResource("Skin_o8bso")
+skeleton = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Explosion/explosion" unique_id=2050403309]
+libraries/ = SubResource("AnimationLibrary_d6o26")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Explosion" to="." method="_on_explosion_body_entered"]

@@ -7,6 +7,7 @@ class_name DiveState
 @export var anim_text: String
 @export var exit_state: State
 
+@export var flap_noise: Resource
 
 func _ready():
 	cooldown_timer.wait_time = dive_time
@@ -17,6 +18,9 @@ func _on_anim_stop():
 func enter() -> void:
 	if anim_text != null:
 		state_machine.anim_player.play(anim_text)
+	
+	state_machine.audio_player.stream = flap_noise
+	state_machine.audio_player.play()
 
 func enable_hitbox():
 	state_machine.enemy.hitbox.monitoring = true
@@ -34,6 +38,7 @@ func physics_update(_delta: float) -> void:
 		state_machine.enemy.velocity.x = direction.x * dive_speed
 		state_machine.enemy.velocity.z = direction.z * dive_speed
 		state_machine.enemy.velocity.y = direction.y * dive_speed
+
 	
 	state_machine.enemy.move_and_slide()
 	state_machine.enemy.look_at(state_machine.target.position)

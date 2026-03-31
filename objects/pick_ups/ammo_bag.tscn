@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bv25bexmmn4v4"]
+
+[ext_resource type="PackedScene" uid="uid://dincaiswkhunl" path="res://blender/ammo_bag.blend" id="1_7uoki"]
+[ext_resource type="Script" uid="uid://3pfqipfpyeww" path="res://objects/pick_ups/ammo_bag.gd" id="1_xwt3y"]
+[ext_resource type="AudioStream" uid="uid://buuhqfkmmtjt7" path="res://sounds/sfx/player incl weapons n potions/GDC - Ammo pickup.wav" id="3_iwp6t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwt3y"]
+
+[node name="AmmoBag" type="Area3D" unique_id=500049249 node_paths=PackedStringArray("timer")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("1_xwt3y")
+timer = NodePath("Timer")
+
+[node name="ammo_bag" parent="." unique_id=1773605067 instance=ExtResource("1_7uoki")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=27382081]
+shape = SubResource("BoxShape3D_xwt3y")
+
+[node name="Timer" type="Timer" parent="." unique_id=284800035]
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1792859986]
+stream = ExtResource("3_iwp6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

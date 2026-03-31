@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://d1q3yk2fbgnfx"]
 
+[ext_resource type="Texture2D" uid="uid://6wds41ypxowp" path="res://blender/maze_rocky_terrain_diff_1k.jpg" id="1_wfu66"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kdjp"]
+albedo_texture = ExtResource("1_wfu66")
+
 [sub_resource type="BoxMesh" id="BoxMesh_ow684"]
+material = SubResource("StandardMaterial3D_2kdjp")
 size = Vector3(5.5, 6, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hb7fr"]

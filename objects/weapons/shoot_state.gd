@@ -6,12 +6,13 @@ class_name ShootState
 @export var exit_state: State
 
 func enter():
-	spawn_bullet(projectile)
-	state_machine.current_ammo -= 1
-	state_machine.anim_player.play(anim_name)
-	await state_machine.anim_player.animation_finished
-	state_machine.switch_state(exit_state)
-	
+	if state_machine.current_ammo > 0:
+		spawn_bullet(projectile)
+		state_machine.current_ammo -= 1
+		state_machine.anim_player.play(anim_name)
+		await state_machine.anim_player.animation_finished
+		state_machine.switch_state(exit_state)
+		
 func spawn_bullet(projectile):
 	var space_state = state_machine.weapon_slot.get_world_3d().direct_space_state
 	var origin_pos: Vector2 = get_viewport().size / 2
