@@ -28,9 +28,9 @@ func disable():
 	switch_state(disable_state)
 	
 func add_ammo(amount: int):
-	if total_ammo != INF:
-		total_ammo += amount
-		total_ammo = clamp(total_ammo, 0, ammo_capacity)
+	
+	total_ammo += amount
+	total_ammo = clamp(total_ammo, 0, ammo_capacity)
 
 
 func _input(event):

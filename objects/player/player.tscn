@@ -25,6 +25,7 @@
 
 [node name="Player" type="CharacterBody3D" unique_id=1089648825 groups=["Player"]]
 script = ExtResource("1_cqmt1")
+SPEED = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=245774912]
 shape = SubResource("CapsuleShape3D_bxedw")

@@ -38,7 +38,7 @@ func enter():
 
 
 func physics_update(_delta):
-	if state_machine.target != null:
-		approach(_delta)
-		state_machine.enemy.look_at(state_machine.target.position)
+	if state_machine.target is Player:
 		
+		state_machine.enemy.look_at(state_machine.target.position)
+		approach(_delta)

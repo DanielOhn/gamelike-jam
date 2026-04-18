@@ -17,6 +17,7 @@ func approach(_delta):
 	
 	if attack_cooldown.is_stopped() and distance < attack_distance:
 		state_machine.switch_state(attack_state)
-	elif distance > 15.0:
-		state_machine.switch_state(ready_state)
+	elif distance > 20.0:
 		state_machine.target = null
+		state_machine.switch_state(ready_state)
+		

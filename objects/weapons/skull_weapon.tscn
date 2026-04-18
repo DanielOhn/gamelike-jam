@@ -1853,7 +1853,7 @@ libraries/ = SubResource("AnimationLibrary_2el65")
 
 [node name="SkullStateMachine" type="Node" parent="." unique_id=1874372962 node_paths=PackedStringArray("anim_player", "start_state", "fire_state", "disable_state")]
 script = ExtResource("1_taeix")
-beam_damage = 3.0
+beam_damage = 4.5
 current_ammo = 30
 max_clip = 30
 total_ammo = 150

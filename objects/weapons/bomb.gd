@@ -4,7 +4,7 @@ class_name Bomb
 @onready var upward_timer = $UpwardTimer
 var direction: Vector3 = Vector3.ZERO
 @export var speed: float = 10
-@export var damage: float = 40
+@export var damage: float = 200
 
 @export var explosion: Area3D
 @export var bomb_mesh: Node3D
@@ -33,8 +33,6 @@ func explode():
 
 	expand_hitbox()
 	anim_player.play("Explosion")
-	
-	
 	await anim_player.animation_finished
 	queue_free()
 	
