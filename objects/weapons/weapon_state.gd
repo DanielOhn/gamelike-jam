@@ -3,8 +3,8 @@ class_name WeaponStateMachine
 
 @export var current_ammo: int = 8
 @export var max_clip: int = 8
-@export var total_ammo: int = INF
-@export var ammo_capacity: int = INF
+@export var total_ammo: int = 999999
+@export var ammo_capacity: int = 999999
 
 
 @onready var player = get_parent().get_parent().get_parent()

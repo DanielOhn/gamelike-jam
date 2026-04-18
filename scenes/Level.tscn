@@ -232,7 +232,7 @@ transform = Transform3D(0.97163993, 0.23646508, 1.0336217e-08, 0, -4.371139e-08,
 pot = NodePath("../Pots/BluePot")
 
 [node name="Player" parent="." unique_id=1089648825 instance=ExtResource("17_nu2gi")]
-transform = Transform3D(-0.37187028, 0, -0.92828476, 0, 1, 0, 0.92828476, 0, -0.37187028, -2.9230375, 1, -62.910316)
+transform = Transform3D(-0.37187028, 0, -0.92828476, 0, 1, 0, 0.92828476, 0, -0.37187028, -2.5657773, 1, -62.647785)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1918869047]
 environment = SubResource("Environment_40jy2")
